@@ -29,5 +29,8 @@ assert "0f1b2d" not in idx, "old navy must go"
 assert "22c55e" not in idx, "old neon green must go"
 assert "<button" in idx, "buttons missing"
 assert "window.open" in idx, "button handler missing"
+assert 'id="typed-text"' in idx, "typing headline missing"
+assert "status-dot" in idx, "availability badge missing"
+assert 'id="menu-toggle"' in idx, "hamburger menu missing"
 assert "viewport" in idx, "responsive meta missing"
 print("check.py PASS")

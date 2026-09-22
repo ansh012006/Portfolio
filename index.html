@@ -10,34 +10,41 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.65}
-h1{color:var(--txt);margin:0 0 8px;font-size:34px;letter-spacing:.01em}
-h2{color:var(--txt);margin:0 0 12px;font-size:22px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+h1{font-size:clamp(34px,7vw,64px);margin:0 0 8px;letter-spacing:.01em;min-height:1.3em}
+h2{color:var(--txt);margin:0 0 12px;font-size:24px}
 h2 span{color:var(--rose);font-weight:400}
-h3{color:var(--txt);margin:0 0 8px;font-size:17px}
+h3{color:var(--txt);margin:0 0 8px;font-size:19px}
 a{color:var(--teal)}
-nav{position:sticky;top:0;z-index:10;background:rgba(25,18,36,.96);border-bottom:1px solid var(--rose)}
-nav .row{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-nav b{color:var(--rose);letter-spacing:.05em}
-nav a{text-decoration:none;font-size:14px;padding:2px 4px;color:var(--mut)}
-nav a:hover{color:var(--txt)}
-nav a.active{color:var(--rose);font-weight:700;border-bottom:2px solid var(--rose)}
+#menu-toggle{position:fixed;top:16px;right:16px;z-index:50;background:var(--panel);border:1px solid var(--line);border-radius:10px;width:48px;height:48px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:0}
+#menu-toggle span{display:block;width:22px;height:2px;background:var(--rose)}
+#menu-toggle:hover{box-shadow:0 4px 14px rgba(251,113,133,.35)}
+#overlay{position:fixed;inset:0;z-index:40;background:rgba(25,18,36,.97);display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease}
+#overlay.open{opacity:1;pointer-events:auto}
+#overlay a{font-size:26px;text-decoration:none;color:var(--txt);padding:6px}
+#overlay a:hover{color:var(--rose)}
 .wrap{max-width:1000px;margin:0 auto;padding:32px 16px 64px}
-.hero{border:1px solid var(--line);border-top:4px solid var(--rose);border-radius:12px;background:linear-gradient(180deg,#33214d 0%,var(--panel) 55%,var(--panel) 100%);padding:32px 24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;box-shadow:0 6px 24px rgba(0,0,0,.3)}
-.avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--rose-hi),var(--rose));color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;flex:none;box-shadow:0 0 0 3px rgba(251,113,133,.25)}
-.hero p{margin:4px 0}
-.role{color:var(--mut)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;background:linear-gradient(180deg,#2b1b45 0%,var(--bg) 70%);padding:24px 16px}
+.status{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--rose);border-radius:999px;padding:8px 18px;font-size:14px;color:var(--rose)}
+.status-dot{width:10px;height:10px;border-radius:50%;background:var(--rose);animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(251,113,133,.5)}70%{box-shadow:0 0 0 10px rgba(251,113,133,0)}100%{box-shadow:0 0 0 0 rgba(251,113,133,0)}}
+.caret{display:inline-block;width:3px;height:1em;background:var(--rose);vertical-align:-0.12em;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.tagline{color:var(--mut);max-width:640px;margin:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;justify-content:center}
 button{font:inherit;cursor:pointer;border-radius:8px;padding:9px 18px;transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
 button:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(251,113,133,.35)}
 button:focus-visible{outline:2px solid var(--rose-hi);outline-offset:2px}
 .btn{background:linear-gradient(180deg,var(--rose-hi),var(--rose));color:var(--ink);border:1px solid var(--rose);font-weight:700}
 .btn-ghost{background:transparent;color:var(--rose);border:1px solid var(--rose)}
 .btn-ghost:hover{background:rgba(251,113,133,.12)}
-section{padding:28px 0}
-.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-.stat{border:1px solid var(--line);border-radius:10px;padding:10px 18px;background:var(--panel)}
-.stat b{display:block;font-size:20px;color:var(--rose)}
-.stat span{font-size:13px;color:var(--mut)}
+.scroll-hint{color:var(--mut);font-size:13px;margin-top:26px;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+section{padding:40px 0}
+.proj{display:grid;grid-template-columns:64px 1fr;gap:16px;border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--panel);margin-bottom:12px}
+.proj .num{font-size:28px;color:var(--rose);font-weight:800}
+.proj .meta{color:var(--mut);font-size:14px}
+.proj .actions{margin-top:8px;justify-content:flex-start}
+.badge{display:inline-block;background:var(--rose);color:var(--ink);font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
 .skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;list-style:none;padding:0}
 .skills li{border:1px solid var(--line);padding:7px 12px;border-radius:999px;background:var(--panel);font-size:14px;display:flex;align-items:center;gap:8px}
 .skills li::before{content:"";width:8px;height:8px;border-radius:50%;flex:none}
@@ -47,37 +54,28 @@ section{padding:28px 0}
 .skills.s3 li::before{background:var(--violet)}
 .skills.s4 li::before{background:var(--mut)}
 h4{color:var(--mut);margin:16px 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
-.card{border:1px solid var(--line);border-top:3px solid var(--rose);border-radius:10px;padding:16px;background:var(--panel);transition:transform .12s ease,box-shadow .12s ease}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.35)}
-.card.c0{border-top-color:var(--rose)}
-.card.c1{border-top-color:var(--teal)}
-.card.c2{border-top-color:var(--amber)}
-.card.c3{border-top-color:var(--violet)}
-.meta{color:var(--mut);font-size:14px}
-.card .actions{margin-top:4px}
-.badge{display:inline-block;background:var(--rose);color:var(--ink);font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
 ul.tight{margin:8px 0;padding-left:20px}
 ul.tight li{margin:4px 0}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.stat{border:1px solid var(--line);border-radius:10px;padding:10px 18px;background:var(--panel)}
+.stat b{display:block;font-size:20px;color:var(--rose)}
+.stat span{font-size:13px;color:var(--mut)}
 footer{padding:28px 0 8px;color:var(--mut);border-top:1px solid var(--rose)}
-footer .actions{margin-top:8px}
-@media(max-width:600px){.hero{padding:20px 16px}h1{font-size:26px}.avatar{width:60px;height:60px;font-size:22px}}
+footer .actions{justify-content:flex-start}
+@media(max-width:600px){.proj{grid-template-columns:1fr}.proj .num{font-size:22px}}
 </style>
 </head>
 <body>
-<nav><div class="row"><b>ansh.dev</b><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></div></nav>
-<div class="wrap">
+<button type="button" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+<nav id="overlay" aria-label="Site sections"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></nav>
 <header class="hero" id="about">
-<div class="avatar">AA</div>
-<div>
-<h1>Ansh Agarwal</h1>
-<p class="role">Computer Science student · Full-stack developer — MERN, Next.js, FastAPI, Flask · ML enthusiast</p>
-<p>ansh012006@gmail.com | 8433074803 | Bareilly, India</p>
+<div class="status"><span class="status-dot"></span>Open to internships</div>
+<h1><span id="typed-text"></span><span class="caret"></span></h1>
+<p class="tagline">Computer Science student and full-stack developer — MERN, Next.js, FastAPI, Flask — with an ML habit. Bareilly, India.</p>
 <div class="actions">
-<button type="button" class="btn" data-url="https://github.com/ansh012006">Visit GitHub</button>
+<button type="button" class="btn" data-scroll="#projects">Explore Projects</button>
 <button type="button" class="btn-ghost" data-url="https://linkedin.com/in/ansh-agarwal-bbb6b9302">Visit LinkedIn</button>
-<button type="button" class="btn-ghost" data-url="Ansh_Agarwal_Resume.pdf">Open Resume (PDF)</button>
-<button type="button" class="btn-ghost" data-url="resume.html">Open Resume (web)</button>
+<button type="button" class="btn-ghost" data-url="Ansh_Agarwal_Resume.pdf">Open Resume</button>
 </div>
 <div class="stats">
 <div class="stat"><b>8</b><span>projects shipped</span></div>
@@ -85,8 +83,9 @@ footer .actions{margin-top:8px}
 <div class="stat"><b>100+</b><span>LeetCode solved</span></div>
 <div class="stat"><b>150+</b><span>HackerRank solved</span></div>
 </div>
-</div>
+<div class="scroll-hint">scroll for more</div>
 </header>
+<div class="wrap">
 <section id="skills">
 <h2><span>01 ·</span> Skills</h2>
 <h4>Languages</h4>
@@ -99,10 +98,11 @@ footer .actions{margin-top:8px}
 <ul class="skills s3"><li>Scikit-learn</li><li>TensorFlow</li><li>PyTorch</li><li>OpenCV</li><li>Pandas</li><li>NumPy</li></ul>
 <h4>Tools</h4>
 <ul class="skills s4"><li>Git/GitHub</li><li>Vercel</li><li>Render</li><li>VS Code</li><li>Jupyter</li></ul>
+<p class="meta" style="color:var(--mut);font-size:14px">ansh012006@gmail.com | 8433074803 | <a href="https://github.com/ansh012006">github.com/ansh012006</a></p>
 </section>
 <section id="projects">
 <h2><span>02 ·</span> Projects</h2>
-<div class="grid" id="project-grid"></div>
+<div id="project-list"></div>
 </section>
 <section id="experience">
 <h2><span>03 ·</span> Experience</h2>
@@ -156,24 +156,33 @@ const PROJECTS = [
 {name:"Kisan Mitra",repo:"Kisan_Mitra",github:"https://github.com/ansh012006/Kisan_Mitra",live:null,stack:"Flask, OpenAI Vision, i18n",blurb:"Crop disease detection, mandi rates, 10 languages."},
 {name:"AgriSetu Backend",repo:"agrisetu-backend",github:"https://github.com/ansh012006/agrisetu-backend",live:null,stack:"JavaScript, REST API",blurb:"Backend APIs for AgriSetu app."}
 ];
-const el = document.getElementById("project-grid");
+const el = document.getElementById("project-list");
 el.innerHTML = PROJECTS.map((p,i) =>
-`<div class="card c${i%4}"><h3>${p.name}${p.live ? '<span class="badge">Live</span>' : ''}</h3>` +
+`<div class="proj"><div class="num">0${i+1}</div><div><h3>${p.name}${p.live ? '<span class="badge">Live</span>' : ''}</h3>` +
 `<p>${p.blurb}</p><p class="meta">${p.stack}</p>` +
 `<div class="actions"><button type="button" class="btn-ghost" data-url="${p.github}">Visit Code</button>` +
-`${p.live ? `<button type="button" class="btn" data-url="${p.live}">Visit Website</button>` : ''}</div></div>`
+`${p.live ? `<button type="button" class="btn" data-url="${p.live}">Visit Website</button>` : ''}</div></div></div>`
 ).join("");
 document.addEventListener("click", (e) => {
   const b = e.target.closest("button[data-url]");
-  if (b) window.open(b.dataset.url, "_blank", "noopener");
+  if (b) { window.open(b.dataset.url, "_blank", "noopener"); return; }
+  const s = e.target.closest("button[data-scroll]");
+  if (s) { const t = document.querySelector(s.dataset.scroll); if (t) t.scrollIntoView({behavior:"smooth"}); return; }
+  if (e.target.closest("#menu-toggle")) { document.getElementById("overlay").classList.toggle("open"); return; }
+  if (e.target.closest("#overlay a")) { document.getElementById("overlay").classList.remove("open"); }
 });
-const links = [...document.querySelectorAll("nav a[href^='#']")];
-const secs = links.map(a => document.querySelector(a.getAttribute("href")));
-addEventListener("scroll", () => {
-  let cur = 0;
-  secs.forEach((s,i) => { if (s && s.getBoundingClientRect().top < 120) cur = i; });
-  links.forEach((a,i) => a.classList.toggle("active", i === cur));
-}, {passive:true});
+const phrases = ["Hi, I'm Ansh Agarwal", "I build full-stack apps", "I train ML models"];
+const typed = document.getElementById("typed-text");
+let pi = 0, ci = 0, del = false;
+(function type() {
+  const cur = phrases[pi];
+  typed.textContent = cur.slice(0, ci);
+  let wait = del ? 40 : 90;
+  if (!del && ci === cur.length) { wait = 1800; del = true; }
+  else if (del && ci === 0) { del = false; pi = (pi + 1) % phrases.length; wait = 400; }
+  ci += del ? -1 : 1;
+  setTimeout(type, wait);
+})();
 </script>
 </body>
 </html>
