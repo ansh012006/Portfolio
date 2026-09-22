@@ -10,4 +10,10 @@ for repo in ["Inventory_Management","job-application-tracker","weather_app","Mov
     assert repo in res or repo.replace("_"," ") in res or repo.replace("_","-") in res
 for live in ["inventorymanagement-ashy-two.vercel.app","job-application-tracker-eta-seven.vercel.app","weather-app-one-delta-60.vercel.app","movie-explorer-blond-xi.vercel.app"]:
     assert live in idx
+for sec in ['id="skills"','id="projects"','id="experience"','id="education"','id="achievements"','id="certifications"','id="contact"']:
+    assert sec in idx, f"section {sec} missing"
+for kw in ["Equinox","LeetCode","HackerRank","Patent","SRMS CET","St. Francis","Bug War","CTF","Python Pro Bootcamp","Java Masterclass"]:
+    assert kw in idx, f"keyword {kw} missing"
+assert 'src="http' not in idx, "no external JS allowed"
+assert "viewport" in idx, "responsive meta missing"
 print("check.py PASS")

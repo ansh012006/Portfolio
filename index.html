@@ -4,26 +4,52 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ansh Agarwal — Portfolio</title>
+<meta name="description" content="Ansh Agarwal, Computer Science student and full-stack developer. Projects, experience, achievements, contact.">
 <style>
-body{background:#0b1220;color:#e5e7eb;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.6}
-h1,h2,h3{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#22c55e}
-a{color:#22c55e}
-.wrap{max-width:900px;margin:0 auto;padding:32px 16px}
-.hero{border-bottom:1px solid #1f2937;padding-bottom:24px}
+:root{--bg:#0b1220;--panel:#111c33;--line:#1f2937;--txt:#e5e7eb;--mut:#9ca3af;--acc:#22c55e;--acc-d:#0b1220}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.6}
+h1,h2,h3{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--acc);margin:0 0 8px}
+a{color:var(--acc)}
+nav{position:sticky;top:0;z-index:10;background:rgba(11,18,32,.95);border-bottom:1px solid var(--line)}
+nav .row{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+nav b{color:var(--acc);font-family:ui-monospace,Menlo,Consolas,monospace}
+nav a{text-decoration:none;font-size:14px}
+nav a:hover{text-decoration:underline}
+.wrap{max-width:1000px;margin:0 auto;padding:32px 16px 64px}
+.hero{display:flex;gap:20px;align-items:center;padding:32px 0 24px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--acc);color:var(--acc-d);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;flex:none}
+.hero p{margin:4px 0}
+section{padding:28px 0;border-bottom:1px solid var(--line)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+.stat{border:1px solid var(--line);border-radius:10px;padding:10px 16px;background:var(--panel)}
+.stat b{display:block;font-size:20px;color:var(--acc)}
+.stat span{font-size:13px;color:var(--mut)}
 .skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;list-style:none;padding:0}
-.skills li{border:1px solid #1f2937;padding:8px;border-radius:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.card{border:1px solid #1f2937;border-radius:10px;padding:16px}
-.badge{display:inline-block;background:#22c55e;color:#0b1220;font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
-.meta{color:#9ca3af;font-size:14px}
+.skills li{border:1px solid var(--line);padding:8px;border-radius:8px;background:var(--panel)}
+h4{color:var(--txt);margin:16px 0 8px;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--panel);transition:transform .15s ease,border-color .15s ease}
+.card:hover{transform:translateY(-3px);border-color:var(--acc)}
+.badge{display:inline-block;background:var(--acc);color:var(--acc-d);font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
+.meta{color:var(--mut);font-size:14px}
 .links a{margin-right:12px}
+ul.tight{margin:8px 0;padding-left:20px}
+ul.tight li{margin:4px 0}
+footer{padding:28px 0 8px;color:var(--mut)}
+footer a{margin-right:12px}
+@media(max-width:600px){.hero{padding:20px 0}.avatar{width:64px;height:64px;font-size:24px}}
 </style>
 </head>
 <body>
+<nav><div class="row"><b>~/ansh</b><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></div></nav>
 <div class="wrap">
-<header class="hero">
+<header class="hero" id="about">
+<div class="avatar">AA</div>
+<div>
 <h1>Ansh Agarwal</h1>
-<p>Full-stack developer — MERN, Next.js, FastAPI, Flask</p>
+<p>Computer Science student · Full-stack developer — MERN, Next.js, FastAPI, Flask · ML enthusiast</p>
 <p>ansh012006@gmail.com | 8433074803 | Bareilly, India</p>
 <p class="links">
 <a href="https://github.com/ansh012006">github.com/ansh012006</a>
@@ -31,28 +57,67 @@ a{color:#22c55e}
 <a href="Ansh_Agarwal_Resume.pdf">Resume (PDF)</a>
 <a href="resume.html">Resume (web)</a>
 </p>
+<div class="stats">
+<div class="stat"><b>8</b><span>projects shipped</span></div>
+<div class="stat"><b>4</b><span>live on Vercel</span></div>
+<div class="stat"><b>100+</b><span>LeetCode solved</span></div>
+<div class="stat"><b>150+</b><span>HackerRank solved</span></div>
+</div>
+</div>
 </header>
-<section>
+<section id="skills">
 <h2>Skills</h2>
-<ul class="skills">
-<li>JavaScript</li>
-<li>HTML/CSS</li>
-<li>Next.js 16</li>
-<li>Supabase</li>
-<li>FastAPI</li>
-<li>Flask</li>
-<li>Expo 57</li>
-<li>PostgreSQL</li>
-<li>Vercel</li>
-<li>Tailwind</li>
-<li>JWT</li>
-<li>REST API</li>
+<h4>Languages</h4>
+<ul class="skills"><li>Python</li><li>Java</li><li>C</li><li>C++</li><li>SQL</li><li>JavaScript</li><li>HTML/CSS</li></ul>
+<h4>Web &amp; Mobile</h4>
+<ul class="skills"><li>Next.js 16</li><li>React</li><li>Expo 57</li><li>Tailwind</li></ul>
+<h4>Backend &amp; Data</h4>
+<ul class="skills"><li>FastAPI</li><li>Flask</li><li>Supabase</li><li>PostgreSQL</li><li>MySQL</li><li>MongoDB</li><li>REST API</li><li>JWT</li></ul>
+<h4>ML &amp; Analysis</h4>
+<ul class="skills"><li>Scikit-learn</li><li>TensorFlow</li><li>PyTorch</li><li>OpenCV</li><li>Pandas</li><li>NumPy</li></ul>
+<h4>Tools</h4>
+<ul class="skills"><li>Git/GitHub</li><li>Vercel</li><li>Render</li><li>VS Code</li><li>Jupyter</li></ul>
+</section>
+<section id="projects">
+<h2>Projects</h2>
+<div class="grid" id="project-grid"></div>
+</section>
+<section id="experience">
+<h2>Experience</h2>
+<ul class="tight"><li><b>Student Coordinator, Equinox Club</b> — SRMS CET, 2024–2025. Organized technical events and coding contests.</li></ul>
+</section>
+<section id="education">
+<h2>Education</h2>
+<ul class="tight">
+<li><b>B.Tech, Computer Science</b> — SRMS CET, Bareilly, 2023–2027. CGPA: 7.8</li>
+<li><b>Class 12, Science</b> — St. Francis Convent School, Bareilly, 2022–2023. 85%</li>
+<li><b>Class 10</b> — St. Francis Convent School, Bareilly, 2020–2021. 94.4%</li>
 </ul>
 </section>
-<section>
-<h2>Projects</h2>
-<div class="grid" id="projects"></div>
+<section id="achievements">
+<h2>Achievements</h2>
+<ul class="tight">
+<li>Published Patent holder — Railway Accident Prevention System</li>
+<li>Winner — Bug War Competition</li>
+<li>Prize winner — CTF, Code Sense, Coding Contest, Bug Bounty</li>
+<li>Solved 100+ LeetCode and 150+ HackerRank problems</li>
+<li>Hackathon 3.0, SRMS CET, 2024 · Symposium, SRMS Trust, 2024 · Saarthi Hackathon, Graphic Era Dehradun, 2025</li>
+</ul>
 </section>
+<section id="certifications">
+<h2>Certifications</h2>
+<ul class="tight">
+<li>Data Structures and Algorithms in Java — 20 hours</li>
+<li>Python Pro Bootcamp — 56.5 hours</li>
+<li>JavaScript Course — 5 hours</li>
+<li>Java Masterclass — 135.5 hours</li>
+</ul>
+</section>
+<footer id="contact">
+<h2>Contact</h2>
+<p>Open to internships in software, data, and ML roles.</p>
+<p><a href="mailto:ansh012006@gmail.com">ansh012006@gmail.com</a><a href="https://github.com/ansh012006">GitHub</a><a href="https://linkedin.com/in/ansh-agarwal-bbb6b9302">LinkedIn</a></p>
+</footer>
 </div>
 <script>
 const PROJECTS = [
@@ -65,7 +130,7 @@ const PROJECTS = [
 {name:"Kisan Mitra",repo:"Kisan_Mitra",github:"https://github.com/ansh012006/Kisan_Mitra",live:null,stack:"Flask, OpenAI Vision, i18n",blurb:"Crop disease detection, mandi rates, 10 languages."},
 {name:"AgriSetu Backend",repo:"agrisetu-backend",github:"https://github.com/ansh012006/agrisetu-backend",live:null,stack:"JavaScript, REST API",blurb:"Backend APIs for AgriSetu app."}
 ];
-const el = document.getElementById("projects");
+const el = document.getElementById("project-grid");
 el.innerHTML = PROJECTS.map(p =>
 `<div class="card"><h3>${p.name}${p.live ? '<span class="badge">Live</span>' : ''}</h3>` +
 `<p>${p.blurb}</p><p class="meta">${p.stack}</p>` +
