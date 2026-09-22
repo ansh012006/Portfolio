@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ansh Agarwal — Portfolio</title>
+<style>
+body{background:#0b1220;color:#e5e7eb;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.6}
+h1,h2,h3{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#22c55e}
+a{color:#22c55e}
+.wrap{max-width:900px;margin:0 auto;padding:32px 16px}
+.hero{border-bottom:1px solid #1f2937;padding-bottom:24px}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;list-style:none;padding:0}
+.skills li{border:1px solid #1f2937;padding:8px;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.card{border:1px solid #1f2937;border-radius:10px;padding:16px}
+.badge{display:inline-block;background:#22c55e;color:#0b1220;font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
+.meta{color:#9ca3af;font-size:14px}
+.links a{margin-right:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<h1>Ansh Agarwal</h1>
+<p>Full-stack developer — MERN, Next.js, FastAPI, Flask</p>
+<p>ansh012006@gmail.com | 8433074803 | Bareilly, India</p>
+<p class="links">
+<a href="https://github.com/ansh012006">github.com/ansh012006</a>
+<a href="https://linkedin.com/in/ansh-agarwal-bbb6b9302">LinkedIn</a>
+<a href="resume.html">Resume (PDF)</a>
+</p>
+</header>
+<section>
+<h2>Skills</h2>
+<ul class="skills">
+<li>JavaScript</li>
+<li>HTML/CSS</li>
+<li>Next.js 16</li>
+<li>Supabase</li>
+<li>FastAPI</li>
+<li>Flask</li>
+<li>Expo 57</li>
+<li>PostgreSQL</li>
+<li>Vercel</li>
+<li>Tailwind</li>
+<li>JWT</li>
+<li>REST API</li>
+</ul>
+</section>
+<section>
+<h2>Projects</h2>
+<div class="grid" id="projects"></div>
+</section>
+</div>
+<script>
+const PROJECTS = [
+{name:"SRMS-IMS Inventory Management",repo:"Inventory_Management",github:"https://github.com/ansh012006/Inventory_Management",live:"https://inventorymanagement-ashy-two.vercel.app",stack:"HTML/CSS/JS, Vercel",blurb:"Hospital equipment tracking with service reminders."},
+{name:"Job Application Tracker",repo:"job-application-tracker",github:"https://github.com/ansh012006/job-application-tracker",live:"https://job-application-tracker-eta-seven.vercel.app",stack:"MERN, Vercel",blurb:"Track applications, interviews, dashboard stats."},
+{name:"Weather App",repo:"weather_app",github:"https://github.com/ansh012006/weather_app",live:"https://weather-app-one-delta-60.vercel.app",stack:"JavaScript, API, Vercel",blurb:"Live weather by city with forecast."},
+{name:"Movie Explorer",repo:"Movie_Explorer",github:"https://github.com/ansh012006/Movie_Explorer",live:"https://movie-explorer-blond-xi.vercel.app",stack:"JavaScript, API, Vercel",blurb:"Browse/search movies with details."},
+{name:"EduTech",repo:"EduTech",github:"https://github.com/ansh012006/EduTech",live:null,stack:"Next.js 16, Supabase, Tailwind",blurb:"Video courses + live classes with auth and roles."},
+{name:"Makaan-Mitra",repo:"makan_mitr_backend",github:"https://github.com/ansh012006/makan_mitr_backend",live:null,stack:"Expo 57, FastAPI, PostgreSQL, JWT",blurb:"Rental app: listings, auth, mobile + API."},
+{name:"Kisan Mitra",repo:"Kisan_Mitra",github:"https://github.com/ansh012006/Kisan_Mitra",live:null,stack:"Flask, OpenAI Vision, i18n",blurb:"Crop disease detection, mandi rates, 10 languages."},
+{name:"AgriSetu Backend",repo:"agrisetu-backend",github:"https://github.com/ansh012006/agrisetu-backend",live:null,stack:"JavaScript, REST API",blurb:"Backend APIs for AgriSetu app."}
+];
+const el = document.getElementById("projects");
+el.innerHTML = PROJECTS.map(p =>
+`<div class="card"><h3>${p.name}${p.live ? '<span class="badge">Live</span>' : ''}</h3>` +
+`<p>${p.blurb}</p><p class="meta">${p.stack}</p>` +
+`<p class="links"><a href="${p.github}">GitHub: ${p.repo}</a>` +
+`${p.live ? `<a href="${p.live}">Live: ${p.live.replace("https://","")}</a>` : ''}</p></div>`
+).join("");
+</script>
+</body>
+</html>
