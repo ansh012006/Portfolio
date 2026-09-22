@@ -6,50 +6,72 @@
 <title>Ansh Agarwal — Portfolio</title>
 <meta name="description" content="Ansh Agarwal, Computer Science student and full-stack developer. Projects, experience, achievements, contact.">
 <style>
-:root{--bg:#191224;--panel:#221a33;--line:#3b2f5a;--txt:#f4f1fa;--mut:#b3a8d0;--rose:#fb7185;--rose-hi:#fda4af;--teal:#2dd4bf;--amber:#fbbf24;--violet:#a78bfa;--ink:#2a1020}
+:root{--bg:#070b12;--panel:#0d1522;--line:#1e2a3f;--txt:#f2f5f9;--mut:#8fa0b8;--teal:#2dd4bf;--teal-deep:#0f766e;--cyan:#22d3ee;--sky:#7dd3fc;--violet:#a78bfa;--amber:#fbbf24;--ink:#04211d}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.65}
 h1{font-size:clamp(34px,7vw,64px);margin:0 0 8px;letter-spacing:.01em;min-height:1.3em}
 h2{color:var(--txt);margin:0 0 12px;font-size:24px}
-h2 span{color:var(--rose);font-weight:400}
+h2 span{color:var(--teal);font-weight:400}
 h3{color:var(--txt);margin:0 0 8px;font-size:19px}
 a{color:var(--teal)}
 #menu-toggle{position:fixed;top:16px;right:16px;z-index:50;background:var(--panel);border:1px solid var(--line);border-radius:10px;width:48px;height:48px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:0}
-#menu-toggle span{display:block;width:22px;height:2px;background:var(--rose)}
-#menu-toggle:hover{box-shadow:0 4px 14px rgba(251,113,133,.35)}
-#overlay{position:fixed;inset:0;z-index:40;background:rgba(25,18,36,.97);display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease}
+#menu-toggle span{display:block;width:22px;height:2px;background:var(--teal)}
+#menu-toggle:hover{box-shadow:0 4px 14px rgba(45,212,191,.35)}
+#overlay{position:fixed;inset:0;z-index:40;background:rgba(7,11,18,.97);display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease}
 #overlay.open{opacity:1;pointer-events:auto}
 #overlay a{font-size:26px;text-decoration:none;color:var(--txt);padding:6px}
-#overlay a:hover{color:var(--rose)}
+#overlay a:hover{color:var(--teal)}
 .wrap{max-width:1000px;margin:0 auto;padding:32px 16px 64px}
-.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;background:linear-gradient(180deg,#2b1b45 0%,var(--bg) 70%);padding:24px 16px}
-.status{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--rose);border-radius:999px;padding:8px 18px;font-size:14px;color:var(--rose)}
-.status-dot{width:10px;height:10px;border-radius:50%;background:var(--rose);animation:pulse 1.6s ease-out infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(251,113,133,.5)}70%{box-shadow:0 0 0 10px rgba(251,113,133,0)}100%{box-shadow:0 0 0 0 rgba(251,113,133,0)}}
-.caret{display:inline-block;width:3px;height:1em;background:var(--rose);vertical-align:-0.12em;animation:blink 1s step-end infinite}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;background:linear-gradient(180deg,#0a2b28 0%,var(--bg) 70%);padding:24px 16px}
+.status{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--teal);border-radius:999px;padding:8px 18px;font-size:14px;color:var(--teal)}
+.status-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(45,212,191,.5)}70%{box-shadow:0 0 0 10px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
+.caret{display:inline-block;width:3px;height:1em;background:var(--teal);vertical-align:-0.12em;animation:blink 1s step-end infinite}
 @keyframes blink{50%{opacity:0}}
 .tagline{color:var(--mut);max-width:640px;margin:0}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;justify-content:center}
 button{font:inherit;cursor:pointer;border-radius:8px;padding:9px 18px;transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
-button:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(251,113,133,.35)}
-button:focus-visible{outline:2px solid var(--rose-hi);outline-offset:2px}
-.btn{background:linear-gradient(180deg,var(--rose-hi),var(--rose));color:var(--ink);border:1px solid var(--rose);font-weight:700}
-.btn-ghost{background:transparent;color:var(--rose);border:1px solid var(--rose)}
-.btn-ghost:hover{background:rgba(251,113,133,.12)}
+button:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(45,212,191,.35)}
+button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.btn{background:linear-gradient(180deg,#5eead4,var(--teal));color:var(--ink);border:1px solid var(--teal);font-weight:700}
+.btn-ghost{background:transparent;color:var(--teal);border:1px solid var(--teal)}
+.btn-ghost:hover{background:rgba(45,212,191,.12)}
 .scroll-hint{color:var(--mut);font-size:13px;margin-top:26px;animation:bob 2s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(6px)}}
 section{padding:40px 0}
-.proj{display:grid;grid-template-columns:64px 1fr;gap:16px;border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--panel);margin-bottom:12px}
-.proj .num{font-size:28px;color:var(--rose);font-weight:800}
-.proj .meta{color:var(--mut);font-size:14px}
-.proj .actions{margin-top:8px;justify-content:flex-start}
-.badge{display:inline-block;background:var(--rose);color:var(--ink);font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.rv.vis{opacity:1;transform:none}
+#slider{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden}
+.slide{display:none;grid-template-columns:1fr 1fr;min-height:380px}
+.slide.on{display:grid}
+.art{position:relative;overflow:hidden;min-height:260px}
+.art .wash{position:absolute;inset:-30px;transition:transform .2s ease-out}
+.art .idx{position:absolute;bottom:4px;right:12px;font-size:110px;font-weight:800;color:rgba(255,255,255,.14);line-height:1}
+.art.a0 .wash{background:linear-gradient(135deg,#0f766e,#22d3ee),radial-gradient(circle at 80% 20%,rgba(255,255,255,.25),transparent 55%)}
+.art.a1 .wash{background:linear-gradient(135deg,#155e75,#22d3ee),radial-gradient(circle at 20% 85%,rgba(45,212,191,.5),transparent 55%)}
+.art.a2 .wash{background:linear-gradient(135deg,#1e3a8a,#22d3ee),radial-gradient(circle at 75% 75%,rgba(125,211,252,.55),transparent 55%)}
+.art.a3 .wash{background:linear-gradient(135deg,#4c1d95,#22d3ee),radial-gradient(circle at 25% 20%,rgba(167,139,250,.55),transparent 55%)}
+.art.a4 .wash{background:linear-gradient(135deg,#134e4a,#2dd4bf),radial-gradient(circle at 80% 80%,rgba(45,212,191,.5),transparent 55%)}
+.art.a5 .wash{background:linear-gradient(135deg,#78350f,#fbbf24),radial-gradient(circle at 20% 25%,rgba(251,191,36,.5),transparent 55%)}
+.art.a6 .wash{background:linear-gradient(135deg,#064e3b,#34d399),radial-gradient(circle at 70% 30%,rgba(255,255,255,.22),transparent 55%)}
+.art.a7 .wash{background:linear-gradient(135deg,#0c4a6e,#a78bfa),radial-gradient(circle at 30% 80%,rgba(125,211,252,.5),transparent 55%)}
+.info{padding:24px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.info .meta{color:var(--mut);font-size:14px}
+.info .actions{justify-content:flex-start}
+.badge{display:inline-block;background:var(--teal);color:var(--ink);font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
+.pagerbar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-top:1px solid var(--line);flex-wrap:wrap}
+.pager{display:flex;gap:6px;flex-wrap:wrap}
+.pager button{width:36px;height:36px;padding:0;border-radius:50%;background:transparent;border:1px solid var(--line);color:var(--mut);font-size:13px}
+.pager button.on{background:var(--teal);border-color:var(--teal);color:var(--ink);font-weight:800}
+.pager button:hover{color:var(--teal)}
+.pager button.on:hover{color:var(--ink)}
+.arrow{margin-left:auto}
 .skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;list-style:none;padding:0}
 .skills li{border:1px solid var(--line);padding:7px 12px;border-radius:999px;background:var(--panel);font-size:14px;display:flex;align-items:center;gap:8px}
 .skills li::before{content:"";width:8px;height:8px;border-radius:50%;flex:none}
-.skills.s0 li::before{background:var(--rose)}
-.skills.s1 li::before{background:var(--teal)}
+.skills.s0 li::before{background:var(--teal)}
+.skills.s1 li::before{background:var(--cyan)}
 .skills.s2 li::before{background:var(--amber)}
 .skills.s3 li::before{background:var(--violet)}
 .skills.s4 li::before{background:var(--mut)}
@@ -58,11 +80,12 @@ ul.tight{margin:8px 0;padding-left:20px}
 ul.tight li{margin:4px 0}
 .stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
 .stat{border:1px solid var(--line);border-radius:10px;padding:10px 18px;background:var(--panel)}
-.stat b{display:block;font-size:20px;color:var(--rose)}
+.stat b{display:block;font-size:20px;color:var(--teal)}
 .stat span{font-size:13px;color:var(--mut)}
-footer{padding:28px 0 8px;color:var(--mut);border-top:1px solid var(--rose)}
+footer{padding:28px 0 8px;color:var(--mut);border-top:1px solid var(--teal)}
 footer .actions{justify-content:flex-start}
-@media(max-width:600px){.proj{grid-template-columns:1fr}.proj .num{font-size:22px}}
+@media(max-width:700px){.slide.on{grid-template-columns:1fr}.art{min-height:180px}.art .idx{font-size:72px}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.status-dot,.scroll-hint,.caret{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -86,7 +109,7 @@ footer .actions{justify-content:flex-start}
 <div class="scroll-hint">scroll for more</div>
 </header>
 <div class="wrap">
-<section id="skills">
+<section id="skills" class="rv">
 <h2><span>01 ·</span> Skills</h2>
 <h4>Languages</h4>
 <ul class="skills s0"><li>Python</li><li>Java</li><li>C</li><li>C++</li><li>SQL</li><li>JavaScript</li><li>HTML/CSS</li></ul>
@@ -98,17 +121,20 @@ footer .actions{justify-content:flex-start}
 <ul class="skills s3"><li>Scikit-learn</li><li>TensorFlow</li><li>PyTorch</li><li>OpenCV</li><li>Pandas</li><li>NumPy</li></ul>
 <h4>Tools</h4>
 <ul class="skills s4"><li>Git/GitHub</li><li>Vercel</li><li>Render</li><li>VS Code</li><li>Jupyter</li></ul>
-<p class="meta" style="color:var(--mut);font-size:14px">ansh012006@gmail.com | 8433074803 | <a href="https://github.com/ansh012006">github.com/ansh012006</a></p>
+<p style="color:var(--mut);font-size:14px">ansh012006@gmail.com | 8433074803 | <a href="https://github.com/ansh012006">github.com/ansh012006</a></p>
 </section>
-<section id="projects">
+<section id="projects" class="rv">
 <h2><span>02 ·</span> Projects</h2>
-<div id="project-list"></div>
+<div id="slider">
+<div id="slides"></div>
+<div class="pagerbar"><div class="pager" id="pager"></div><div class="arrow actions" style="margin-top:0"><button type="button" class="btn-ghost" id="prev">Prev</button><button type="button" class="btn-ghost" id="next">Next</button></div></div>
+</div>
 </section>
-<section id="experience">
+<section id="experience" class="rv">
 <h2><span>03 ·</span> Experience</h2>
 <ul class="tight"><li><b>Student Coordinator, Equinox Club</b> — SRMS CET, 2024–2025. Organized technical events and coding contests.</li></ul>
 </section>
-<section id="education">
+<section id="education" class="rv">
 <h2><span>04 ·</span> Education</h2>
 <ul class="tight">
 <li><b>B.Tech, Computer Science</b> — SRMS CET, Bareilly, 2023–2027. CGPA: 7.8</li>
@@ -116,7 +142,7 @@ footer .actions{justify-content:flex-start}
 <li><b>Class 10</b> — St. Francis Convent School, Bareilly, 2020–2021. 94.4%</li>
 </ul>
 </section>
-<section id="achievements">
+<section id="achievements" class="rv">
 <h2><span>05 ·</span> Achievements</h2>
 <ul class="tight">
 <li>Published Patent holder — Railway Accident Prevention System</li>
@@ -126,7 +152,7 @@ footer .actions{justify-content:flex-start}
 <li>Hackathon 3.0, SRMS CET, 2024 · Symposium, SRMS Trust, 2024 · Saarthi Hackathon, Graphic Era Dehradun, 2025</li>
 </ul>
 </section>
-<section id="certifications">
+<section id="certifications" class="rv">
 <h2><span>06 ·</span> Certifications</h2>
 <ul class="tight">
 <li>Data Structures and Algorithms in Java — 20 hours</li>
@@ -135,7 +161,7 @@ footer .actions{justify-content:flex-start}
 <li>Java Masterclass — 135.5 hours</li>
 </ul>
 </section>
-<footer id="contact">
+<footer id="contact" class="rv">
 <h2><span>07 ·</span> Contact</h2>
 <p>Open to internships in software, data, and ML roles.</p>
 <div class="actions">
@@ -156,13 +182,46 @@ const PROJECTS = [
 {name:"Kisan Mitra",repo:"Kisan_Mitra",github:"https://github.com/ansh012006/Kisan_Mitra",live:null,stack:"Flask, OpenAI Vision, i18n",blurb:"Crop disease detection, mandi rates, 10 languages."},
 {name:"AgriSetu Backend",repo:"agrisetu-backend",github:"https://github.com/ansh012006/agrisetu-backend",live:null,stack:"JavaScript, REST API",blurb:"Backend APIs for AgriSetu app."}
 ];
-const el = document.getElementById("project-list");
-el.innerHTML = PROJECTS.map((p,i) =>
-`<div class="proj"><div class="num">0${i+1}</div><div><h3>${p.name}${p.live ? '<span class="badge">Live</span>' : ''}</h3>` +
+const slides = document.getElementById("slides");
+const pager = document.getElementById("pager");
+slides.innerHTML = PROJECTS.map((p,i) =>
+`<div class="slide${i===0?" on":""}" data-slide="${i}"><div class="art a${i%8}"><div class="wash"></div><div class="idx">0${i+1}</div></div>` +
+`<div class="info"><h3>${p.name}${p.live ? '<span class="badge">Live</span>' : ''}</h3>` +
 `<p>${p.blurb}</p><p class="meta">${p.stack}</p>` +
 `<div class="actions"><button type="button" class="btn-ghost" data-url="${p.github}">Visit Code</button>` +
 `${p.live ? `<button type="button" class="btn" data-url="${p.live}">Visit Website</button>` : ''}</div></div></div>`
 ).join("");
+pager.innerHTML = PROJECTS.map((_,i) => `<button type="button" data-goto="${i}" class="${i===0?"on":""}" aria-label="Slide ${i+1}">${i+1}</button>`).join("");
+let cur = 0, timer = null;
+function show(n) {
+  cur = (n + PROJECTS.length) % PROJECTS.length;
+  slides.querySelectorAll(".slide").forEach((s,i) => s.classList.toggle("on", i === cur));
+  pager.querySelectorAll("button").forEach((b,i) => b.classList.toggle("on", i === cur));
+}
+function autoplay() { clearInterval(timer); timer = setInterval(() => show(cur + 1), 6000); }
+document.getElementById("prev").addEventListener("click", () => { show(cur - 1); autoplay(); });
+document.getElementById("next").addEventListener("click", () => { show(cur + 1); autoplay(); });
+pager.addEventListener("click", (e) => { const b = e.target.closest("button[data-goto]"); if (b) { show(+b.dataset.goto); autoplay(); } });
+document.getElementById("slider").addEventListener("pointerenter", () => clearInterval(timer));
+document.getElementById("slider").addEventListener("pointerleave", autoplay);
+autoplay();
+const fine = matchMedia("(pointer:fine)").matches;
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (fine && !calm) {
+  let raf = null;
+  document.getElementById("slider").addEventListener("mousemove", (e) => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = null;
+      const r = e.currentTarget.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width - 0.5) * 24;
+      const y = ((e.clientY - r.top) / r.height - 0.5) * 24;
+      slides.querySelectorAll(".slide.on .wash").forEach(w => { w.style.transform = `translate(${-x}px,${-y}px)`; });
+    });
+  });
+}
+const io = new IntersectionObserver((es) => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("vis"); io.unobserve(x.target); } }), {threshold: 0.12});
+document.querySelectorAll(".rv").forEach(s => io.observe(s));
 document.addEventListener("click", (e) => {
   const b = e.target.closest("button[data-url]");
   if (b) { window.open(b.dataset.url, "_blank", "noopener"); return; }
@@ -175,10 +234,10 @@ const phrases = ["Hi, I'm Ansh Agarwal", "I build full-stack apps", "I train ML 
 const typed = document.getElementById("typed-text");
 let pi = 0, ci = 0, del = false;
 (function type() {
-  const cur = phrases[pi];
-  typed.textContent = cur.slice(0, ci);
+  const curP = phrases[pi];
+  typed.textContent = curP.slice(0, ci);
   let wait = del ? 40 : 90;
-  if (!del && ci === cur.length) { wait = 1800; del = true; }
+  if (!del && ci === curP.length) { wait = 1800; del = true; }
   else if (del && ci === 0) { del = false; pi = (pi + 1) % phrases.length; wait = 400; }
   ci += del ? -1 : 1;
   setTimeout(type, wait);
