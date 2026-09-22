@@ -17,5 +17,8 @@ for kw in ["Equinox","LeetCode","HackerRank","Patent","SRMS CET","St. Francis","
 assert 'src="http' not in idx, "no external JS allowed"
 assert "fonts.googleapis" not in idx and "cdn." not in idx, "no external assets allowed"
 assert "linear-gradient" in idx, "gradient styling missing"
+assert all(ord(c) < 0x2600 for c in idx), "no emojis allowed"
+assert "#f59e0b" in idx, "new amber scheme missing"
+assert "22c55e" not in idx, "old neon green must go"
 assert "viewport" in idx, "responsive meta missing"
 print("check.py PASS")

@@ -6,64 +6,64 @@
 <title>Ansh Agarwal — Portfolio</title>
 <meta name="description" content="Ansh Agarwal, Computer Science student and full-stack developer. Projects, experience, achievements, contact.">
 <style>
-:root{--bg:#0b1220;--panel:#111c33;--line:#1f2937;--txt:#e5e7eb;--mut:#9ca3af;--acc:#22c55e;--acc-d:#0b1220;--cyan:#22d3ee;--blue:#60a5fa;--amber:#fbbf24;--pink:#f472b6;--violet:#a78bfa}
+:root{--bg:#0f1b2d;--panel:#16263d;--line:#2a3b55;--txt:#e8edf5;--mut:#93a1b8;--teal:#2dd4bf;--amber:#f59e0b;--sky:#7dd3fc;--lilac:#c4b5fd;--ink:#0f1b2d}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.6}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(600px 300px at 15% 0%,rgba(34,213,238,.08),transparent),radial-gradient(700px 320px at 90% 10%,rgba(167,139,250,.08),transparent)}
-h1,h2,h3{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--acc);margin:0 0 8px}
-a{color:var(--acc)}
-nav{position:sticky;top:0;z-index:10;background:rgba(11,18,32,.95);border-bottom:1px solid var(--line)}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.65}
+h1{color:var(--txt);margin:0 0 8px;font-size:34px}
+h2{color:var(--txt);margin:0 0 12px;font-size:22px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+h2 span{color:var(--teal)}
+h3{color:var(--txt);margin:0 0 8px;font-size:17px}
+a{color:var(--teal)}
+nav{position:sticky;top:0;z-index:10;background:rgba(15,27,45,.96);border-bottom:1px solid var(--line)}
 nav .row{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-nav b{color:var(--acc);font-family:ui-monospace,Menlo,Consolas,monospace}
-nav a{text-decoration:none;font-size:14px;padding:2px 4px;border-radius:6px}
-nav a:hover{background:var(--panel)}
-nav a.active{background:var(--acc);color:var(--acc-d);font-weight:700}
-.wrap{max-width:1000px;margin:0 auto;padding:32px 16px 64px;position:relative}
-.hero{display:flex;gap:20px;align-items:center;padding:32px 24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#0b3b2e 0%,#0b3b4a 45%,#1b2a5e 100%);flex-wrap:wrap}
-.avatar{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--cyan));color:var(--acc-d);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;flex:none;box-shadow:0 0 24px rgba(34,211,238,.35)}
+nav b{color:var(--amber)}
+nav a{text-decoration:none;font-size:14px;padding:2px 4px;color:var(--mut)}
+nav a:hover{color:var(--txt)}
+nav a.active{color:var(--amber);font-weight:700;border-bottom:2px solid var(--amber)}
+.wrap{max-width:1000px;margin:0 auto;padding:32px 16px 64px}
+.hero{border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:12px;background:linear-gradient(180deg,rgba(45,212,191,.07),transparent 60%),var(--panel);padding:32px 24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.avatar{width:80px;height:80px;border-radius:50%;background:var(--teal);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;flex:none}
 .hero p{margin:4px 0}
-section{padding:28px 0;border-bottom:1px solid var(--line)}
+.role{color:var(--mut)}
+section{padding:28px 0}
 .stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-.stat{border:1px solid var(--line);border-radius:10px;padding:10px 16px;background:rgba(17,28,51,.85)}
-.stat b{display:block;font-size:20px;background:linear-gradient(90deg,var(--acc),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat{border:1px solid var(--line);border-radius:10px;padding:10px 18px;background:var(--bg)}
+.stat b{display:block;font-size:20px;color:var(--amber)}
 .stat span{font-size:13px;color:var(--mut)}
 .skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;list-style:none;padding:0}
-.skills li{border:1px solid var(--line);padding:8px;border-radius:999px;background:var(--panel);text-align:center;font-size:14px}
-.skills.s0 li{border-color:var(--acc);color:#bbf7d0}
-.skills.s1 li{border-color:var(--cyan);color:#a5f3fc}
-.skills.s2 li{border-color:var(--blue);color:#bfdbfe}
-.skills.s3 li{border-color:var(--violet);color:#ddd6fe}
-.skills.s4 li{border-color:var(--amber);color:#fde68a}
-h4{color:var(--txt);margin:16px 0 8px;font-size:15px}
+.skills li{border:1px solid var(--line);padding:7px 12px;border-radius:999px;background:var(--bg);font-size:14px;display:flex;align-items:center;gap:8px}
+.skills li::before{content:"";width:8px;height:8px;border-radius:50%;flex:none}
+.skills.s0 li::before{background:var(--teal)}
+.skills.s1 li::before{background:var(--sky)}
+.skills.s2 li::before{background:var(--amber)}
+.skills.s3 li::before{background:var(--lilac)}
+.skills.s4 li::before{background:var(--mut)}
+h4{color:var(--mut);margin:16px 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
-.card{border:1px solid var(--line);border-left:5px solid var(--acc);border-radius:10px;padding:16px;background:var(--panel);transition:transform .15s ease,box-shadow .15s ease}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(34,197,94,.18)}
-.card.c0{border-left-color:var(--acc)}
-.card.c1{border-left-color:var(--cyan)}
-.card.c1:hover{box-shadow:0 8px 28px rgba(34,211,238,.22)}
-.card.c2{border-left-color:var(--violet)}
-.card.c2:hover{box-shadow:0 8px 28px rgba(167,139,250,.22)}
-.card.c3{border-left-color:var(--amber)}
-.card.c3:hover{box-shadow:0 8px 28px rgba(251,191,36,.20)}
-.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--cyan));color:var(--acc-d);font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
+.card{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:10px;padding:16px;background:var(--panel)}
+.card.c0{border-top-color:var(--teal)}
+.card.c1{border-top-color:var(--sky)}
+.card.c2{border-top-color:var(--amber)}
+.card.c3{border-top-color:var(--lilac)}
+.badge{display:inline-block;background:var(--amber);color:var(--ink);font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-left:8px}
 .meta{color:var(--mut);font-size:14px}
 .links a{margin-right:12px}
 ul.tight{margin:8px 0;padding-left:20px}
 ul.tight li{margin:4px 0}
-footer{padding:28px 0 8px;color:var(--mut);border-top:3px solid;border-image:linear-gradient(90deg,var(--acc),var(--cyan),var(--violet),var(--amber)) 1}
+footer{padding:28px 0 8px;color:var(--mut);border-top:1px solid var(--amber)}
 footer a{margin-right:12px}
-@media(max-width:600px){.hero{padding:20px 16px}.avatar{width:64px;height:64px;font-size:24px}}
+@media(max-width:600px){.hero{padding:20px 16px}h1{font-size:26px}.avatar{width:60px;height:60px;font-size:22px}}
 </style>
 </head>
 <body>
-<nav><div class="row"><b>~/ansh</b><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></div></nav>
+<nav><div class="row"><b>ansh.dev</b><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></div></nav>
 <div class="wrap">
 <header class="hero" id="about">
 <div class="avatar">AA</div>
 <div>
 <h1>Ansh Agarwal</h1>
-<p>Computer Science student · Full-stack developer — MERN, Next.js, FastAPI, Flask · ML enthusiast</p>
+<p class="role">Computer Science student · Full-stack developer — MERN, Next.js, FastAPI, Flask · ML enthusiast</p>
 <p>ansh012006@gmail.com | 8433074803 | Bareilly, India</p>
 <p class="links">
 <a href="https://github.com/ansh012006">github.com/ansh012006</a>
@@ -80,7 +80,7 @@ footer a{margin-right:12px}
 </div>
 </header>
 <section id="skills">
-<h2>🛠️ Skills</h2>
+<h2><span>01 ·</span> Skills</h2>
 <h4>Languages</h4>
 <ul class="skills s0"><li>Python</li><li>Java</li><li>C</li><li>C++</li><li>SQL</li><li>JavaScript</li><li>HTML/CSS</li></ul>
 <h4>Web &amp; Mobile</h4>
@@ -93,15 +93,15 @@ footer a{margin-right:12px}
 <ul class="skills s4"><li>Git/GitHub</li><li>Vercel</li><li>Render</li><li>VS Code</li><li>Jupyter</li></ul>
 </section>
 <section id="projects">
-<h2>🚀 Projects</h2>
+<h2><span>02 ·</span> Projects</h2>
 <div class="grid" id="project-grid"></div>
 </section>
 <section id="experience">
-<h2>💼 Experience</h2>
+<h2><span>03 ·</span> Experience</h2>
 <ul class="tight"><li><b>Student Coordinator, Equinox Club</b> — SRMS CET, 2024–2025. Organized technical events and coding contests.</li></ul>
 </section>
 <section id="education">
-<h2>🎓 Education</h2>
+<h2><span>04 ·</span> Education</h2>
 <ul class="tight">
 <li><b>B.Tech, Computer Science</b> — SRMS CET, Bareilly, 2023–2027. CGPA: 7.8</li>
 <li><b>Class 12, Science</b> — St. Francis Convent School, Bareilly, 2022–2023. 85%</li>
@@ -109,7 +109,7 @@ footer a{margin-right:12px}
 </ul>
 </section>
 <section id="achievements">
-<h2>🏆 Achievements</h2>
+<h2><span>05 ·</span> Achievements</h2>
 <ul class="tight">
 <li>Published Patent holder — Railway Accident Prevention System</li>
 <li>Winner — Bug War Competition</li>
@@ -119,7 +119,7 @@ footer a{margin-right:12px}
 </ul>
 </section>
 <section id="certifications">
-<h2>📜 Certifications</h2>
+<h2><span>06 ·</span> Certifications</h2>
 <ul class="tight">
 <li>Data Structures and Algorithms in Java — 20 hours</li>
 <li>Python Pro Bootcamp — 56.5 hours</li>
@@ -128,7 +128,7 @@ footer a{margin-right:12px}
 </ul>
 </section>
 <footer id="contact">
-<h2>📬 Contact</h2>
+<h2><span>07 ·</span> Contact</h2>
 <p>Open to internships in software, data, and ML roles.</p>
 <p><a href="mailto:ansh012006@gmail.com">ansh012006@gmail.com</a><a href="https://github.com/ansh012006">GitHub</a><a href="https://linkedin.com/in/ansh-agarwal-bbb6b9302">LinkedIn</a></p>
 </footer>
