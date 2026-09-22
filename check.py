@@ -15,5 +15,7 @@ for sec in ['id="skills"','id="projects"','id="experience"','id="education"','id
 for kw in ["Equinox","LeetCode","HackerRank","Patent","SRMS CET","St. Francis","Bug War","CTF","Python Pro Bootcamp","Java Masterclass"]:
     assert kw in idx, f"keyword {kw} missing"
 assert 'src="http' not in idx, "no external JS allowed"
+assert "fonts.googleapis" not in idx and "cdn." not in idx, "no external assets allowed"
+assert "linear-gradient" in idx, "gradient styling missing"
 assert "viewport" in idx, "responsive meta missing"
 print("check.py PASS")
