@@ -8,8 +8,9 @@ assert "github.com/ansh012006" in idx
 for repo in ["Inventory_Management","job-application-tracker","weather_app","Movie_Explorer","EduTech","makan_mitr_backend","Kisan_Mitra","agrisetu-backend"]:
     assert repo in idx
     assert repo in res or repo.replace("_"," ") in res or repo.replace("_","-") in res
-for live in ["inventorymanagement-ashy-two.vercel.app","job-application-tracker-eta-seven.vercel.app","weather-app-one-delta-60.vercel.app","movie-explorer-blond-xi.vercel.app"]:
+for live in ["inventorymanagement-ashy-two.vercel.app","job-application-tracker-eta-seven.vercel.app","weather-app-one-delta-60.vercel.app","movie-explorer-blond-xi.vercel.app","edutech-jgz42eg11-ansh-agarwal.vercel.app"]:
     assert live in idx
+assert "edutech-jgz42eg11-ansh-agarwal.vercel.app" in res, "edutech live missing in resume"
 for sec in ['id="skills"','id="projects"','id="experience"','id="education"','id="achievements"','id="certifications"','id="contact"']:
     assert sec in idx, f"section {sec} missing"
 for kw in ["Equinox","LeetCode","HackerRank","Patent","SRMS CET","St. Francis","Bug War","CTF","Python Pro Bootcamp","Java Masterclass"]:
