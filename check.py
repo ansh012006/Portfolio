@@ -5,16 +5,22 @@ res = (p / "resume.html").read_text(encoding="utf-8")
 assert "Ansh Agarwal" in idx
 assert "ansh012006@gmail.com" in idx
 assert "github.com/ansh012006" in idx
-for repo in ["Inventory_Management","job-application-tracker","weather_app","Movie_Explorer","EduTech","makan_mitr_backend","Kisan_Mitra","agrisetu-backend"]:
+for repo in ["Inventory_Management","job-application-tracker","weather_app","Movie_Explorer","EduTech","makan_mitr_backend","Kisan_Mitra","agrisetu-backend","HealthQueue","Hostel_Management","E-commerce-Website"]:
     assert repo in idx
     assert repo in res or repo.replace("_"," ") in res or repo.replace("_","-") in res
-for live in ["inventorymanagement-ashy-two.vercel.app","job-application-tracker-eta-seven.vercel.app","weather-app-one-delta-60.vercel.app","movie-explorer-blond-xi.vercel.app","edutech-jgz42eg11-ansh-agarwal.vercel.app"]:
+for live in ["inventorymanagement-ashy-two.vercel.app","job-application-tracker-eta-seven.vercel.app","weather-app-one-delta-60.vercel.app","movie-explorer-blond-xi.vercel.app","edutech-jgz42eg11-ansh-agarwal.vercel.app","healthqueue-nine.vercel.app","hostel-management-three-sigma.vercel.app","e-commerce-gilt-seven-90.vercel.app"]:
     assert live in idx
 assert "edutech-jgz42eg11-ansh-agarwal.vercel.app" in res, "edutech live missing in resume"
-for sec in ['id="skills"','id="projects"','id="experience"','id="education"','id="achievements"','id="certifications"','id="contact"']:
+for sec in ['id="skills"','id="projects"','id="experience"','id="education"','id="achievements"','id="contact"']:
     assert sec in idx, f"section {sec} missing"
 for kw in ["Equinox","LeetCode","HackerRank","Patent","SRMS CET","St. Francis","Bug War","CTF","Python Pro Bootcamp","Java Masterclass"]:
     assert kw in idx, f"keyword {kw} missing"
+assert "IEEE" in idx, "IEEE role missing"
+assert "IEEE" in res, "IEEE role missing in resume"
+assert "202511009933" in idx, "patent app no missing in index"
+assert "202511009933" in res, "patent app no missing in resume"
+assert "+91 8433074803" in idx, "phone missing in index"
+assert "+91 8433074803" in res, "phone missing in resume"
 assert 'src="http' not in idx, "no external JS allowed"
 assert "fonts.googleapis" not in idx and "cdn." not in idx, "no external assets allowed"
 assert "linear-gradient" in idx, "gradient styling missing"

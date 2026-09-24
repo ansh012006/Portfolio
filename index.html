@@ -18,12 +18,31 @@ a{color:var(--teal)}
 #menu-toggle{position:fixed;top:16px;right:16px;z-index:50;background:var(--panel);border:1px solid var(--line);border-radius:10px;width:48px;height:48px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:0}
 #menu-toggle span{display:block;width:22px;height:2px;background:var(--teal)}
 #menu-toggle:hover{box-shadow:0 4px 14px rgba(45,212,191,.35)}
-#overlay{position:fixed;inset:0;z-index:40;background:rgba(7,11,18,.97);display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s ease}
-#overlay.open{opacity:1;pointer-events:auto}
-#overlay a{font-size:26px;text-decoration:none;color:var(--txt);padding:6px}
+#menu-toggle{display:none}
+#overlay{position:fixed;top:22px;left:50%;transform:translateX(-50%);z-index:40;background:rgba(13,21,34,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;display:flex;flex-direction:row;gap:2px;align-items:center;padding:8px 14px;max-width:96vw;overflow-x:auto;opacity:1;pointer-events:auto;transition:opacity .25s ease;scrollbar-width:none}
+body.deck:not(.pagenav) #overlay{opacity:0;pointer-events:none}
+#overlay::-webkit-scrollbar{display:none}
+#overlay a{font-size:14px;text-decoration:none;color:var(--txt);padding:8px 12px;white-space:nowrap;border-radius:999px}
 #overlay a:hover{color:var(--teal)}
+#overlay a.on{background:rgba(45,212,191,.14);color:var(--teal)}
+@media(max-width:700px){
+#menu-toggle{display:flex}
+#overlay{top:0;left:0;transform:none;max-width:none;width:100%;height:100dvh;border:0;border-radius:0;background:rgba(7,11,18,.97);backdrop-filter:none;-webkit-backdrop-filter:none;flex-direction:column;gap:6px;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+#overlay.open{opacity:1;pointer-events:auto}
+#overlay a{font-size:26px;padding:6px}
+}
 .wrap{max-width:1000px;margin:0 auto;padding:32px 16px 64px}
-.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;background:linear-gradient(180deg,#0a2b28 0%,var(--bg) 70%);padding:24px 16px}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;background:linear-gradient(rgba(45,212,191,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(45,212,191,.055) 1px,transparent 1px),radial-gradient(ellipse 60% 50% at 50% 0%,rgba(15,118,110,.4),transparent 70%),linear-gradient(180deg,#0a2b28 0%,var(--bg) 70%);background-size:56px 56px,56px 56px,100% 100%,100% 100%;padding:24px 16px;position:relative;overflow:hidden}
+.hero>*{position:relative;z-index:1}
+#stars{position:absolute;inset:0;z-index:0;width:100%;height:100%}
+#musicbtn{position:fixed;right:16px;bottom:76px;z-index:35;width:44px;height:44px;border-radius:50%;background:var(--panel);border:1px solid var(--teal);display:flex;align-items:center;justify-content:center;padding:0}
+body:not(.deck) #musicbtn{bottom:16px}
+#musicbtn .eq{display:flex;gap:3px;align-items:flex-end;height:16px}
+#musicbtn .eq i{width:3px;height:5px;background:var(--teal);border-radius:2px}
+#musicbtn.playing .eq i{animation:eq .9s ease-in-out infinite alternate}
+#musicbtn.playing .eq i:nth-child(2){animation-delay:.25s}
+#musicbtn.playing .eq i:nth-child(3){animation-delay:.5s}
+@keyframes eq{from{height:4px}to{height:16px}}
 .status{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--teal);border-radius:999px;padding:8px 18px;font-size:14px;color:var(--teal)}
 .status-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);animation:pulse 1.6s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(45,212,191,.5)}70%{box-shadow:0 0 0 10px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
@@ -42,9 +61,18 @@ button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 section{padding:40px 0}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
 .rv.vis{opacity:1;transform:none}
-#slider{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden}
-.slide{display:none;grid-template-columns:1fr 1fr;min-height:380px}
-.slide.on{display:grid}
+#slider{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden;perspective:1400px;position:relative}
+#slides{position:relative;min-height:480px;perspective:1400px;overflow:hidden}
+.slide{position:absolute;inset:12px;display:grid;grid-template-columns:1fr 1fr;transform-style:preserve-3d;will-change:transform,opacity;opacity:0;pointer-events:none;z-index:0;transform:translateX(60%) rotateY(-35deg) rotate(3deg) scale(.8);transition:transform .7s cubic-bezier(.16,.8,.24,1),opacity .7s ease}
+.slide.on{opacity:1;pointer-events:auto;transform:none;z-index:2}
+.slide[data-off="-1"]{opacity:.6;transform:translateX(-42%) rotateY(30deg) rotate(-5deg) scale(.8);z-index:1}
+.slide[data-off="1"]{opacity:.6;transform:translateX(42%) rotateY(-30deg) rotate(5deg) scale(.8);z-index:1}
+.slide[data-off="-2"]{opacity:.28;transform:translate(-70%,-12%) rotateY(35deg) rotate(-10deg) scale(.68);z-index:0}
+.slide[data-off="2"]{opacity:.28;transform:translate(70%,12%) rotateY(-35deg) rotate(10deg) scale(.68);z-index:0}
+.slide:not(.on){grid-template-columns:1fr}
+.slide:not(.on) .info{display:none}
+#slider.switch{animation:switchGlow .8s ease}
+@keyframes switchGlow{0%{box-shadow:0 0 0 rgba(45,212,191,0)}25%{box-shadow:0 0 70px rgba(45,212,191,.45)}100%{box-shadow:none}}
 .art{position:relative;overflow:hidden;min-height:260px}
 .art .wash{position:absolute;inset:-30px;transition:transform .2s ease-out}
 .art .idx{position:absolute;bottom:4px;right:12px;font-size:110px;font-weight:800;color:rgba(255,255,255,.14);line-height:1}
@@ -56,6 +84,19 @@ section{padding:40px 0}
 .art.a5 .wash{background:linear-gradient(135deg,#78350f,#fbbf24),radial-gradient(circle at 20% 25%,rgba(251,191,36,.5),transparent 55%)}
 .art.a6 .wash{background:linear-gradient(135deg,#064e3b,#34d399),radial-gradient(circle at 70% 30%,rgba(255,255,255,.22),transparent 55%)}
 .art.a7 .wash{background:linear-gradient(135deg,#0c4a6e,#a78bfa),radial-gradient(circle at 30% 80%,rgba(125,211,252,.5),transparent 55%)}
+.art{display:grid;place-items:center}
+.art svg.pic{width:120px;height:120px;position:relative;z-index:1;opacity:.9;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35));animation:floaty 5s ease-in-out infinite}
+.slide.on .wash{animation:kenburns 7s ease-out both}
+.slide.on .info>*{animation:rise .5s ease both}
+.slide.on .info>*:nth-child(2){animation-delay:.08s}.slide.on .info>*:nth-child(3){animation-delay:.16s}.slide.on .info>*:nth-child(4){animation-delay:.24s}
+.art::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.25) 50%,transparent 60%);transform:translateX(-120%);animation:sheen 6s ease-in-out infinite;pointer-events:none}
+#slider{position:relative}
+.ripple{position:absolute;z-index:3;width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.5);transform:translate(-50%,-50%);animation:ripple .7s ease-out forwards;pointer-events:none}
+@keyframes floaty{50%{transform:translateY(-10px)}}
+@keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes sheen{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+@keyframes ripple{to{width:220px;height:220px;opacity:0}}
 .info{padding:24px;display:flex;flex-direction:column;justify-content:center;gap:8px}
 .info .meta{color:var(--mut);font-size:14px}
 .info .actions{justify-content:flex-start}
@@ -84,29 +125,71 @@ ul.tight li{margin:4px 0}
 .stat span{font-size:13px;color:var(--mut)}
 footer{padding:28px 0 8px;color:var(--mut);border-top:1px solid var(--teal)}
 footer .actions{justify-content:flex-start}
-@media(max-width:700px){.slide.on{grid-template-columns:1fr}.art{min-height:180px}.art .idx{font-size:72px}}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.status-dot,.scroll-hint,.caret{animation:none}html{scroll-behavior:auto}}
+@media(max-width:700px){#slides{min-height:660px}.slide{inset:8px}.slide.on{grid-template-columns:1fr}.art{min-height:180px}.art .idx{font-size:72px}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.status-dot,.scroll-hint,.caret{animation:none}.slide{transition:none}.slide.on{animation:none}body.deck .page{transition:none}html{scroll-behavior:auto}}
+/* deck: one fullscreen page at a time with animated switches (no libs, sections reused as pages) */
+body.deck{overflow:hidden}
+body.deck .wrap{max-width:none;margin:0;padding:0}
+body.deck .page{position:fixed;top:0;bottom:0;left:0;right:0;width:100%;max-width:1000px;margin:0 auto;z-index:1;overflow-y:auto;overflow-x:hidden;opacity:0;pointer-events:none;padding:72px 16px 110px;transform:translateX(90px) rotate(1.2deg) scale(.97);transition:transform .6s cubic-bezier(.16,.8,.24,1),opacity .6s ease}
+body.deck header.page{max-width:none}
+body.deck .page[data-pdir="-1"]:not(.on){transform:translateX(-90px) rotate(-1.2deg) scale(.97)}
+body.deck .page.on{opacity:1;pointer-events:auto;transform:none;z-index:2}
+#pagedots{position:fixed;left:16px;bottom:16px;z-index:30;display:none;gap:6px}
+body.deck #pagedots{display:flex}
+#pagedots button{width:36px;height:36px;padding:0;border-radius:50%;background:var(--panel);border:1px solid var(--line);color:var(--mut);font-size:13px}
+#pagedots button.on{background:var(--teal);border-color:var(--teal);color:var(--ink);font-weight:800}
+#pagearrows{position:fixed;right:16px;bottom:16px;z-index:30;display:none;gap:8px}
+body.deck #pagearrows{display:flex}
+#pagebar{position:fixed;left:0;right:0;bottom:0;height:84px;z-index:29;background:linear-gradient(180deg,rgba(7,11,18,0),rgba(7,11,18,.92));pointer-events:none;display:none}
+body.deck #pagebar{display:block}
+body.deck .page{scrollbar-width:thin;scrollbar-color:var(--teal-deep) transparent}
+body.deck .page::-webkit-scrollbar{width:8px}
+body.deck .page::-webkit-scrollbar-track{background:transparent}
+body.deck .page::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+body.deck .page::-webkit-scrollbar-thumb:hover{background:var(--teal)}
+/* cards + timeline */
+.lede{color:var(--mut);margin:0 0 4px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:18px}
+.card .kicker{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.card h3{margin:6px 0}
+.card p{margin:6px 0}
+.card .sub{color:var(--mut);font-size:14px}
+.pill{display:inline-block;border:1px solid var(--teal);color:var(--teal);border-radius:999px;font-size:12px;padding:3px 12px}
+.tl{list-style:none;margin:12px 0 0;padding:0 0 0 28px;position:relative}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl li{position:relative;margin:0 0 20px}
+.tl li::before{content:attr(data-n);position:absolute;left:-28px;top:0;width:20px;height:20px;border-radius:50%;background:var(--panel);border:1px solid var(--teal);color:var(--teal);font-size:10px;display:flex;align-items:center;justify-content:center}
+.tl .role{font-weight:700}
+.tl .org{color:var(--mut);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.tl p{margin:4px 0 0;color:var(--txt)}
+@media(max-height:820px){body.deck .page{padding-top:56px}h4{margin:10px 0 6px}.skills li{padding:5px 12px;font-size:13px}}
 </style>
 </head>
 <body>
 <button type="button" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
-<nav id="overlay" aria-label="Site sections"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a></nav>
+<nav id="overlay" aria-label="Site sections"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a></nav>
+<div id="pagedots" aria-label="Pages"></div>
+<div id="pagearrows"><button type="button" class="btn-ghost" id="pprev">Prev</button><button type="button" class="btn-ghost" id="pnext">Next</button></div>
+<div id="pagebar"></div>
+<button type="button" id="musicbtn" aria-label="Toggle ambient music"><span class="eq"><i></i><i></i><i></i></span></button>
 <header class="hero" id="about">
+<canvas id="stars" aria-hidden="true"></canvas>
 <div class="status"><span class="status-dot"></span>Open to internships</div>
 <h1><span id="typed-text"></span><span class="caret"></span></h1>
-<p class="tagline">Computer Science student and full-stack developer — MERN, Next.js, FastAPI, Flask — with an ML habit. Bareilly, India.</p>
+<p class="tagline">Computer Science student and full-stack developer — MERN, Next.js, FastAPI, Flask — with an ML habit. Bareilly, Uttar Pradesh, India.</p>
 <div class="actions">
 <button type="button" class="btn" data-scroll="#projects">Explore Projects</button>
 <button type="button" class="btn-ghost" data-url="https://linkedin.com/in/ansh-agarwal-bbb6b9302">Visit LinkedIn</button>
 <button type="button" class="btn-ghost" data-url="Ansh_Agarwal_Resume.pdf">Open Resume</button>
 </div>
 <div class="stats">
-<div class="stat"><b>8</b><span>projects shipped</span></div>
-<div class="stat"><b>5</b><span>live on Vercel</span></div>
+<div class="stat"><b>11</b><span>projects shipped</span></div>
+<div class="stat"><b>8</b><span>live on Vercel</span></div>
 <div class="stat"><b>100+</b><span>LeetCode solved</span></div>
 <div class="stat"><b>150+</b><span>HackerRank solved</span></div>
 </div>
-<div class="scroll-hint">scroll for more</div>
+<div class="scroll-hint">menu · arrows · dots to explore</div>
 </header>
 <div class="wrap">
 <section id="skills" class="rv">
@@ -121,7 +204,7 @@ footer .actions{justify-content:flex-start}
 <ul class="skills s3"><li>Scikit-learn</li><li>TensorFlow</li><li>PyTorch</li><li>OpenCV</li><li>Pandas</li><li>NumPy</li></ul>
 <h4>Tools</h4>
 <ul class="skills s4"><li>Git/GitHub</li><li>Vercel</li><li>Render</li><li>VS Code</li><li>Jupyter</li></ul>
-<p style="color:var(--mut);font-size:14px">ansh012006@gmail.com | 8433074803 | <a href="https://github.com/ansh012006">github.com/ansh012006</a></p>
+<p style="color:var(--mut);font-size:14px">ansh012006@gmail.com | +91 8433074803 | <a href="https://github.com/ansh012006">github.com/ansh012006</a></p>
 </section>
 <section id="projects" class="rv">
 <h2><span>02 ·</span> Projects</h2>
@@ -132,18 +215,30 @@ footer .actions{justify-content:flex-start}
 </section>
 <section id="experience" class="rv">
 <h2><span>03 ·</span> Experience</h2>
-<ul class="tight"><li><b>Student Coordinator, Equinox Club</b> — SRMS CET, 2024–2025. Organized technical events and coding contests.</li></ul>
+<p class="lede">Running rooms, not just repos — two student leadership roles.</p>
+<ol class="tl">
+<li data-n="01"><div class="org">IEEE SRMS Student Branch · President · Current</div><div class="role">President, IEEE Student Branch — SRMS CET, Bareilly</div><p>Leading the student branch: technical events, workshops and member activities.</p></li>
+<li data-n="02"><div class="org">Equinox Club · SRMS CET · 2024–2025</div><div class="role">Student Coordinator, Equinox Club</div><p>Organized technical events and coding contests.</p></li>
+</ol>
 </section>
 <section id="education" class="rv">
 <h2><span>04 ·</span> Education</h2>
-<ul class="tight">
-<li><b>B.Tech, Computer Science</b> — SRMS CET, Bareilly, 2023–2027. CGPA: 7.8</li>
-<li><b>Class 12, Science</b> — St. Francis Convent School, Bareilly, 2022–2023. 85%</li>
-<li><b>Class 10</b> — St. Francis Convent School, Bareilly, 2020–2021. 94.4%</li>
-</ul>
+<div class="cards">
+<div class="card"><div class="kicker">2023–2027 · CGPA 7.8</div><h3>B.Tech, Computer Science</h3><p class="sub">SRMS CET, Bareilly</p></div>
+<div class="card"><div class="kicker">2022–2023 · 85%</div><h3>Class 12, Science</h3><p class="sub">St. Francis Convent School, Bareilly</p></div>
+<div class="card"><div class="kicker">2020–2021 · 94.4%</div><h3>Class 10</h3><p class="sub">St. Francis Convent School, Bareilly</p></div>
+</div>
+<h4>Certifications</h4>
+<div class="cards">
+<div class="card"><h3>Data Structures and Algorithms in Java</h3><p class="sub">20 hours</p></div>
+<div class="card"><h3>Python Pro Bootcamp</h3><p class="sub">56.5 hours</p></div>
+<div class="card"><h3>JavaScript Course</h3><p class="sub">5 hours</p></div>
+<div class="card"><h3>Java Masterclass</h3><p class="sub">135.5 hours</p></div>
+</div>
 </section>
 <section id="achievements" class="rv">
 <h2><span>05 ·</span> Achievements</h2>
+<div class="card"><span class="pill">Published Patent</span><h3>Railway Accident Prevention System</h3><p class="sub">Application No. 202511009933</p></div>
 <ul class="tight">
 <li>Published Patent holder — Railway Accident Prevention System</li>
 <li>Winner — Bug War Competition</li>
@@ -152,18 +247,14 @@ footer .actions{justify-content:flex-start}
 <li>Hackathon 3.0, SRMS CET, 2024 · Symposium, SRMS Trust, 2024 · Saarthi Hackathon, Graphic Era Dehradun, 2025</li>
 </ul>
 </section>
-<section id="certifications" class="rv">
-<h2><span>06 ·</span> Certifications</h2>
-<ul class="tight">
-<li>Data Structures and Algorithms in Java — 20 hours</li>
-<li>Python Pro Bootcamp — 56.5 hours</li>
-<li>JavaScript Course — 5 hours</li>
-<li>Java Masterclass — 135.5 hours</li>
-</ul>
-</section>
 <footer id="contact" class="rv">
-<h2><span>07 ·</span> Contact</h2>
+<h2><span>06 ·</span> Contact</h2>
 <p>Open to internships in software, data, and ML roles.</p>
+<div class="cards">
+<div class="card"><div class="kicker">Email</div><p><a href="mailto:ansh012006@gmail.com">ansh012006@gmail.com</a></p></div>
+<div class="card"><div class="kicker">Phone</div><p>+91 8433074803</p></div>
+<div class="card"><div class="kicker">Location</div><p>Bareilly, Uttar Pradesh, India</p></div>
+</div>
 <div class="actions">
 <button type="button" class="btn" data-url="mailto:ansh012006@gmail.com">Email Me</button>
 <button type="button" class="btn-ghost" data-url="https://github.com/ansh012006">Visit GitHub</button>
@@ -180,12 +271,25 @@ const PROJECTS = [
 {name:"EduTech",repo:"EduTech",github:"https://github.com/ansh012006/EduTech",live:"https://edutech-jgz42eg11-ansh-agarwal.vercel.app",stack:"Next.js 16, Supabase, Tailwind",blurb:"Video courses + live classes with auth and roles."},
 {name:"Makaan-Mitra",repo:"makan_mitr_backend",github:"https://github.com/ansh012006/makan_mitr_backend",live:null,stack:"Expo 57, FastAPI, PostgreSQL, JWT",blurb:"Rental app: listings, auth, mobile + API."},
 {name:"Kisan Mitra",repo:"Kisan_Mitra",github:"https://github.com/ansh012006/Kisan_Mitra",live:null,stack:"Flask, OpenAI Vision, i18n",blurb:"Crop disease detection, mandi rates, 10 languages."},
-{name:"AgriSetu Backend",repo:"agrisetu-backend",github:"https://github.com/ansh012006/agrisetu-backend",live:null,stack:"JavaScript, REST API",blurb:"Backend APIs for AgriSetu app."}
+{name:"AgriSetu Backend",repo:"agrisetu-backend",github:"https://github.com/ansh012006/agrisetu-backend",live:null,stack:"JavaScript, REST API",blurb:"Backend APIs for AgriSetu app."},
+{name:"HealthQueue",repo:"HealthQueue",github:"https://github.com/ansh012006/HealthQueue",live:"https://healthqueue-nine.vercel.app/",stack:"Flask, Flask-Login, SQLAlchemy, Vercel",blurb:"Patient/Doctor/Pharmacist appointments, availability, pharmacy, wait-time."},
+{name:"Hostel Leave Management",repo:"Hostel_Management",github:"https://github.com/ansh012006/Hostel_Management",live:"https://hostel-management-three-sigma.vercel.app/",stack:"Flask, Flask-Login, SQLAlchemy, Vercel",blurb:"Student leave apply, HOD/warden approve, gate IN/OUT, role dashboards."},
+{name:"ShopHub E-Commerce",repo:"E-commerce-Website",github:"https://github.com/ansh012006/E-commerce-Website",live:"https://e-commerce-gilt-seven-90.vercel.app/",stack:"HTML/CSS/JS, LocalStorage, Vercel",blurb:"16-product catalog, cart/wishlist, 3-step checkout, promo codes."}
 ];
 const slides = document.getElementById("slides");
 const pager = document.getElementById("pager");
+const ICONS = [
+`<svg class="pic" viewBox="0 0 64 64" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="18" width="44" height="34" rx="3"/><path d="M10 26h44M22 18v8M42 18v8M22 34h20M22 41h12"/></svg>`,
+`<svg class="pic" viewBox="0 0 64 64" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="18" width="40" height="28" rx="4"/><path d="M24 18v-4a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v4M24 32l5 5 11-11"/></svg>`,
+`<svg class="pic" viewBox="0 0 64 64" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="26" cy="24" r="10"/><path d="M26 10v4M12 24h4M16 14l3 3M36 14l-3 3M18 44a7 7 0 0 1 0-14 10 10 0 0 1 19-2 8 8 0 0 1 1 16H18z"/></svg>`,
+`<svg class="pic" viewBox="0 0 64 64" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="14" width="44" height="36" rx="4"/><path d="M18 14v36M46 14v36M10 24h8M10 32h8M10 40h8M46 24h8M46 32h8M46 40h8M27 26l12 6-12 6z"/></svg>`,
+`<svg class="pic" viewBox="0 0 64 64" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="12" width="48" height="34" rx="5"/><path d="M27 21l12 8-12 8zM20 54h24"/></svg>`,
+`<svg class="pic" viewBox="0 0 64 64" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 30L32 12l22 18M16 27v23h32V27M26 50V38h12v12"/></svg>`,
+`<svg class="pic" viewBox="0 0 64 64" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8C18 20 14 34 16 52c18 2 32-4 38-20 4-10 2-18-2-24-8 2-14 0-20 0zM22 44c6-8 12-14 20-18"/></svg>`,
+`<svg class="pic" viewBox="0 0 64 64" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="10" width="36" height="12" rx="3"/><rect x="14" y="26" width="36" height="12" rx="3"/><rect x="14" y="42" width="36" height="12" rx="3"/><path d="M20 16h4M20 32h4M20 48h4"/></svg>`
+];
 slides.innerHTML = PROJECTS.map((p,i) =>
-`<div class="slide${i===0?" on":""}" data-slide="${i}"><div class="art a${i%8}"><div class="wash"></div><div class="idx">0${i+1}</div></div>` +
+`<div class="slide${i===0?" on":""}" data-slide="${i}"><div class="art a${i%8}"><div class="wash"></div>${ICONS[i%8]}<div class="idx">0${i+1}</div></div>` +
 `<div class="info"><h3>${p.name}${p.live ? '<span class="badge">Live</span>' : ''}</h3>` +
 `<p>${p.blurb}</p><p class="meta">${p.stack}</p>` +
 `<div class="actions"><button type="button" class="btn-ghost" data-url="${p.github}">Visit Code</button>` +
@@ -195,9 +299,20 @@ pager.innerHTML = PROJECTS.map((_,i) => `<button type="button" data-goto="${i}" 
 let cur = 0, timer = null;
 function show(n) {
   cur = (n + PROJECTS.length) % PROJECTS.length;
-  slides.querySelectorAll(".slide").forEach((s,i) => s.classList.toggle("on", i === cur));
-  pager.querySelectorAll("button").forEach((b,i) => b.classList.toggle("on", i === cur));
+  layout();
 }
+function layout() {
+  slides.querySelectorAll(".slide").forEach((s,i) => {
+    let off = (i - cur + PROJECTS.length) % PROJECTS.length;
+    if (off > PROJECTS.length / 2) off -= PROJECTS.length;
+    s.dataset.off = off;
+    s.classList.toggle("on", i === cur);
+  });
+  pager.querySelectorAll("button").forEach((b,i) => b.classList.toggle("on", i === cur));
+  const sl = document.getElementById("slider");
+  sl.classList.remove("switch"); void sl.offsetWidth; sl.classList.add("switch");
+}
+layout();
 function autoplay() { clearInterval(timer); timer = setInterval(() => show(cur + 1), 6000); }
 document.getElementById("prev").addEventListener("click", () => { show(cur - 1); autoplay(); });
 document.getElementById("next").addEventListener("click", () => { show(cur + 1); autoplay(); });
@@ -222,13 +337,25 @@ if (fine && !calm) {
 }
 const io = new IntersectionObserver((es) => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add("vis"); io.unobserve(x.target); } }), {threshold: 0.12});
 document.querySelectorAll(".rv").forEach(s => io.observe(s));
+// ponytail: CSS-only click ripple, skip canvas water simulation unless it proves weak
+document.getElementById("slider").addEventListener("pointerdown", (e) => {
+  if (calm) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  const s = document.createElement("span");
+  s.className = "ripple";
+  s.style.left = (e.clientX - r.left) + "px";
+  s.style.top = (e.clientY - r.top) + "px";
+  e.currentTarget.appendChild(s);
+  setTimeout(() => s.remove(), 750);
+});
 document.addEventListener("click", (e) => {
   const b = e.target.closest("button[data-url]");
   if (b) { window.open(b.dataset.url, "_blank", "noopener"); return; }
   const s = e.target.closest("button[data-scroll]");
-  if (s) { const t = document.querySelector(s.dataset.scroll); if (t) t.scrollIntoView({behavior:"smooth"}); return; }
+  if (s) { if (document.body.classList.contains("deck")) { gotoPageById(s.dataset.scroll.slice(1)); } else { const t = document.querySelector(s.dataset.scroll); if (t) t.scrollIntoView({behavior:"smooth"}); } return; }
   if (e.target.closest("#menu-toggle")) { document.getElementById("overlay").classList.toggle("open"); return; }
-  if (e.target.closest("#overlay a")) { document.getElementById("overlay").classList.remove("open"); }
+  const a = e.target.closest("#overlay a");
+  if (a) { e.preventDefault(); document.getElementById("overlay").classList.remove("open"); gotoPageById(a.getAttribute("href").slice(1)); }
 });
 const phrases = ["Hi, I'm Ansh Agarwal", "I build full-stack apps", "I train ML models"];
 const typed = document.getElementById("typed-text");
@@ -242,6 +369,178 @@ let pi = 0, ci = 0, del = false;
   ci += del ? -1 : 1;
   setTimeout(type, wait);
 })();
+// ponytail: pages reuse existing sections, no framework, no router lib
+const PAGE_IDS = ["about","skills","projects","experience","education","achievements","contact"];
+const PAGES = PAGE_IDS.map(id => document.getElementById(id));
+// ponytail: deck is a wide-screen pattern; small screens keep native stacked scroll
+const deckOK = matchMedia("(min-width: 701px)").matches;
+if (deckOK) document.body.classList.add("deck");
+PAGES.forEach(p => p.classList.add("page"));
+const pdots = document.getElementById("pagedots");
+pdots.innerHTML = PAGES.map((p,i) => `<button type="button" data-pgoto="${i}" class="${i===0?"on":""}" aria-label="${p.id}">${i+1}</button>`).join("");
+let pg = 0, wheelLock = false;
+function gotoPageById(id) {
+  const i = PAGE_IDS.indexOf(id);
+  if (i < 0) return;
+  if (document.body.classList.contains("deck")) gotoPage(i);
+  else { const t = document.getElementById(id); if (t) t.scrollIntoView({behavior:"smooth"}); }
+}
+function gotoPage(n) {
+  if (!document.body.classList.contains("deck")) return;
+  const next = (n + PAGES.length) % PAGES.length;
+  if (next === pg) return;
+  const fwd = ((next - pg + PAGES.length) % PAGES.length) <= PAGES.length / 2;
+  PAGES[next].dataset.pdir = fwd ? 1 : -1;
+  PAGES[pg].classList.remove("on");
+  PAGES[next].querySelectorAll(".rv").forEach(el => el.classList.add("vis"));
+  PAGES[next].scrollTop = 0;
+  PAGES[next].classList.add("on");
+  pg = next;
+  document.body.classList.toggle("pagenav", pg === 0);
+  pdots.querySelectorAll("button").forEach((b,i) => b.classList.toggle("on", i === pg));
+  document.querySelectorAll("#overlay a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + PAGE_IDS[pg]));
+  try { history.replaceState(null, "", "#" + PAGE_IDS[pg]); } catch (_) {}
+}
+(function initPage() {
+  if (!deckOK) return;
+  const i = PAGE_IDS.indexOf((location.hash || "").slice(1));
+  if (i > 0) pg = i;
+  document.body.classList.toggle("pagenav", pg === 0);
+  PAGES[pg].querySelectorAll(".rv").forEach(el => el.classList.add("vis"));
+  PAGES[pg].classList.add("on");
+  pdots.querySelectorAll("button").forEach((b,i) => b.classList.toggle("on", i === pg));
+  document.querySelectorAll("#overlay a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + PAGE_IDS[pg]));
+})();
+pdots.addEventListener("click", (e) => { const b = e.target.closest("button[data-pgoto]"); if (b) gotoPage(+b.dataset.pgoto); });
+document.getElementById("pprev").addEventListener("click", () => gotoPage(pg - 1));
+document.getElementById("pnext").addEventListener("click", () => gotoPage(pg + 1));
+document.addEventListener("keydown", (e) => {
+  if (!document.body.classList.contains("deck")) return;
+  if (document.getElementById("overlay").classList.contains("open")) { if (e.key === "Escape") document.getElementById("overlay").classList.remove("open"); return; }
+  const tag = (e.target.tagName || "").toLowerCase();
+  if (tag === "input" || tag === "textarea") return;
+  if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); gotoPage(pg + 1); }
+  else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); gotoPage(pg - 1); }
+  else if (e.key === "Home") { e.preventDefault(); gotoPage(0); }
+  else if (e.key === "End") { e.preventDefault(); gotoPage(PAGES.length - 1); }
+});
+function pageScrollable(p) { return p.scrollHeight > p.clientHeight + 10; }
+document.addEventListener("wheel", (e) => {
+  if (!document.body.classList.contains("deck")) return;
+  if (wheelLock || document.getElementById("overlay").classList.contains("open")) return;
+  if (Math.abs(e.deltaY) < 12) return;
+  const p = PAGES[pg];
+  if (pageScrollable(p)) {
+    if (e.deltaY > 0 && p.scrollTop + p.clientHeight < p.scrollHeight - 4) return;
+    if (e.deltaY < 0 && p.scrollTop > 0) return;
+  }
+  e.preventDefault();
+  wheelLock = true;
+  gotoPage(pg + (e.deltaY > 0 ? 1 : -1));
+  setTimeout(() => { wheelLock = false; }, 900);
+}, {passive: false});
+let tx = 0, ty = 0;
+document.addEventListener("touchstart", (e) => { const t = e.changedTouches[0]; tx = t.clientX; ty = t.clientY; }, {passive: true});
+document.addEventListener("touchend", (e) => {
+  if (!document.body.classList.contains("deck")) return;
+  if (document.getElementById("overlay").classList.contains("open")) return;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - tx, dy = t.clientY - ty;
+  const p = PAGES[pg];
+  if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy)) gotoPage(pg + (dx < 0 ? 1 : -1));
+  else if (Math.abs(dy) > 70 && !pageScrollable(p)) gotoPage(pg + (dy < 0 ? 1 : -1));
+}, {passive: true});
+// ponytail: canvas constellation + generative pad, no libs, no audio files
+(function stars() {
+  const sc = document.getElementById("stars");
+  if (!sc) return;
+  const sx = sc.getContext("2d");
+  let pts = [], W = 0, H = 0, mx = 0, my = 0;
+  function size() {
+    const r = sc.parentElement.getBoundingClientRect();
+    const d = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    sc.width = W * d; sc.height = H * d;
+    sx.setTransform(d, 0, 0, d, 0, 0);
+    const n = Math.min(85, Math.floor(W * H / 16000));
+    pts = Array.from({length: n}, () => ({x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, r: Math.random() * 1.4 + .4}));
+  }
+  size();
+  addEventListener("resize", size);
+  if (fine && !calm) sc.parentElement.addEventListener("mousemove", (e) => {
+    const r = sc.getBoundingClientRect();
+    mx = (e.clientX - r.left) / r.width - .5;
+    my = (e.clientY - r.top) / r.height - .5;
+  });
+  (function loop() {
+    requestAnimationFrame(loop);
+    if (document.hidden || !W) return;
+    sx.clearRect(0, 0, W, H);
+    for (const p of pts) {
+      if (!calm) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      }
+      sx.beginPath();
+      sx.arc(p.x + mx * 14 * p.r, p.y + my * 14 * p.r, p.r, 0, 7);
+      sx.fillStyle = "rgba(125,211,252,.7)";
+      sx.fill();
+    }
+    sx.lineWidth = 1;
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+      const a = pts[i], b = pts[j];
+      const dx = a.x - b.x, dy = a.y - b.y, d = dx * dx + dy * dy;
+      if (d < 12000) {
+        sx.strokeStyle = "rgba(45,212,191," + ((1 - d / 12000) * .22).toFixed(3) + ")";
+        sx.beginPath();
+        sx.moveTo(a.x + mx * 14 * a.r, a.y + my * 14 * a.r);
+        sx.lineTo(b.x + mx * 14 * b.r, b.y + my * 14 * b.r);
+        sx.stroke();
+      }
+    }
+  })();
+})();
+let AC = null, bellTimer = null;
+const mbtn = document.getElementById("musicbtn");
+mbtn.addEventListener("click", () => {
+  const on = mbtn.classList.toggle("playing");
+  if (on) {
+    AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+    AC.resume();
+    const g = AC.createGain();
+    g.gain.value = 0;
+    g.connect(AC.destination);
+    g.gain.linearRampToValueAtTime(0.035, AC.currentTime + 3);
+    const f = AC.createBiquadFilter();
+    f.type = "lowpass"; f.frequency.value = 700;
+    f.connect(g);
+    [110, 220, 330].forEach(fr => {
+      const o = AC.createOscillator();
+      o.type = "sine"; o.frequency.value = fr;
+      o.connect(f); o.start();
+    });
+    const scale = [261.63, 293.66, 329.63, 392, 440];
+    let step = 2;
+    bellTimer = setInterval(() => {
+      if (!AC || AC.state !== "running") return;
+      const t = AC.currentTime;
+      const o = AC.createOscillator(), e = AC.createGain();
+      o.type = "sine";
+      o.frequency.value = scale[step];
+      step += [-1, -1, 1, 1, 2][Math.floor(Math.random() * 5)];
+      if (step < 0) step = 1; if (step > scale.length - 1) step = scale.length - 2;
+      e.gain.setValueAtTime(0.0001, t);
+      e.gain.exponentialRampToValueAtTime(0.025, t + 0.15);
+      e.gain.exponentialRampToValueAtTime(0.0001, t + 3.2);
+      o.connect(e); e.connect(AC.destination);
+      o.start(t); o.stop(t + 3.4);
+    }, 2400);
+  } else {
+    if (bellTimer) { clearInterval(bellTimer); bellTimer = null; }
+    if (AC) AC.suspend();
+  }
+});
 </script>
 </body>
 </html>
