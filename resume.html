@@ -5,42 +5,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ansh Agarwal — Resume</title>
 <style>
-body{color:#000;background:#fff;font-family:Arial,Helvetica,sans-serif;max-width:800px;margin:0 auto;padding:32px 16px;line-height:1.5}
-h1{font-size:28px;margin-bottom:4px}
-h2{font-size:18px;border-bottom:1px solid #000;padding-bottom:4px}
-p,li{font-size:14px}
+@page{size:A4;margin:9mm 12mm}
+*{box-sizing:border-box}
+body{color:#111;background:#fff;font-family:Arial,Helvetica,sans-serif;margin:0 auto;max-width:210mm;line-height:1.28;font-size:10pt}
+h1{font-size:18pt;margin:0 0 1px}
+h2{font-size:10.5pt;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #111;padding-bottom:1px;margin:7px 0 3px}
+p,li{font-size:9.5pt;margin:0}
+ul{margin:2px 0 0;padding-left:14px}
+li{margin:1px 0}
+.contact{font-size:10pt;color:#333}
+.contact a{color:#0f766e}
+.skills{margin:2px 0}
+a{color:#0f766e;text-decoration:none}
+.proj{margin-bottom:1px}
+.proj b{font-size:9.5pt}
+.meta{color:#444;font-size:9pt}
+@media print{a{color:#0f766e}}
 </style>
 </head>
 <body>
 <h1>Ansh Agarwal</h1>
-<p>ansh012006@gmail.com | 8433074803 | Bareilly, India | https://github.com/ansh012006 | https://linkedin.com/in/ansh-agarwal-bbb6b9302</p>
+<p class="contact">Bareilly, Uttar Pradesh, India | +91 8433074803 | ansh012006@gmail.com<br>
+<a href="https://github.com/ansh012006">github.com/ansh012006</a> | <a href="https://linkedin.com/in/ansh-agarwal-bbb6b9302">linkedin.com/in/ansh-agarwal-bbb6b9302</a> | <a href="https://anshagarwal.co.in">anshagarwal.co.in</a></p>
+
 <h2>Summary</h2>
-<p>Full-stack developer (B.Tech 2023-2027) building web and mobile apps with MERN, Next.js, FastAPI, and Flask. 8 projects shipped across inventory, jobs, media, edtech, rental, agriculture domains.</p>
-<h2>Skills</h2>
-<p>JavaScript, HTML, CSS, Next.js, Supabase, FastAPI, Flask, Expo, PostgreSQL, Tailwind, JWT, REST API, Vercel, Git, OpenAI Vision, i18n</p>
+<p>Full-stack developer (B.Tech Computer Science, 2023–2027) with 11 shipped projects, 8 live on Vercel, across inventory, jobs, media, edtech, rental, agriculture, healthcare, hostel and e-commerce domains. MERN, Next.js, FastAPI/Flask, Flask-Login, SQLAlchemy, Supabase/PostgreSQL, LocalStorage. Published patent holder; solved 100+ LeetCode and 150+ HackerRank problems. President, IEEE Student Branch, SRMS CET.</p>
+
+<h2>Technical Skills</h2>
+<p class="skills"><b>Languages:</b> JavaScript, Python, Java, C, C++, SQL, HTML, CSS<br>
+<b>Frontend / Mobile:</b> React, Next.js 16, Tailwind CSS, Expo 57<br>
+<b>Backend / Data:</b> FastAPI, Flask, Supabase, PostgreSQL, MySQL, MongoDB, REST API, JWT<br>
+<b>ML / Data:</b> Scikit-learn, TensorFlow, PyTorch, OpenCV, Pandas, NumPy<br>
+<b>Tools:</b> Git, GitHub, Vercel, Render, VS Code, Jupyter</p>
+
+<h2>Experience</h2>
+<ul>
+<li><b>President, IEEE Student Branch</b> — SRMS CET, Bareilly (Current). Lead the student branch; organize technical events, workshops and member activities.</li>
+<li><b>Student Coordinator, Equinox Club</b> — SRMS CET, Bareilly (2024–2025). Organized technical events and coding contests.</li>
+</ul>
+
 <h2>Projects</h2>
 <ul>
-<li>SRMS-IMS Inventory Management — Hospital equipment tracking with service reminders. https://github.com/ansh012006/Inventory_Management — Live: https://inventorymanagement-ashy-two.vercel.app</li>
-<li>Job Application Tracker — Track applications, interviews, dashboard stats. https://github.com/ansh012006/job-application-tracker — Live: https://job-application-tracker-eta-seven.vercel.app</li>
-<li>Weather App — Live weather by city with forecast. https://github.com/ansh012006/weather_app — Live: https://weather-app-one-delta-60.vercel.app</li>
-<li>Movie Explorer — Browse/search movies with details. https://github.com/ansh012006/Movie_Explorer — Live: https://movie-explorer-blond-xi.vercel.app</li>
-<li>EduTech — Video courses + live classes with auth and roles. https://github.com/ansh012006/EduTech — Live: https://edutech-jgz42eg11-ansh-agarwal.vercel.app</li>
-<li>Makaan-Mitra — Rental app: listings, auth, mobile + API. https://github.com/ansh012006/makan_mitr_backend</li>
-<li>Kisan Mitra — Crop disease detection, mandi rates, 10 languages. https://github.com/ansh012006/Kisan_Mitra</li>
-<li>AgriSetu Backend — Backend APIs for AgriSetu app. https://github.com/ansh012006/agrisetu-backend</li>
+<li class="proj"><b>SRMS-IMS Inventory Management</b> (Inventory_Management) — Hospital equipment tracking with service reminders. <span class="meta">HTML/CSS/JS, Vercel. Live: https://inventorymanagement-ashy-two.vercel.app</span></li>
+<li class="proj"><b>Job Application Tracker</b> (job-application-tracker) — Application/interview tracking with dashboard stats. <span class="meta">MERN, Vercel. Live: https://job-application-tracker-eta-seven.vercel.app</span></li>
+<li class="proj"><b>Weather App</b> (weather_app) — Live weather by city with forecast. <span class="meta">JavaScript, REST API, Vercel. Live: https://weather-app-one-delta-60.vercel.app</span></li>
+<li class="proj"><b>Movie Explorer</b> (Movie_Explorer) — Browse/search movies with details. <span class="meta">JavaScript, REST API, Vercel. Live: https://movie-explorer-blond-xi.vercel.app</span></li>
+<li class="proj"><b>EduTech</b> (EduTech) — Video courses + live classes with auth and roles. <span class="meta">Next.js 16, Supabase, Tailwind. Live: https://edutech-jgz42eg11-ansh-agarwal.vercel.app</span></li>
+<li class="proj"><b>Makaan-Mitra</b> (makan_mitr_backend) — Rental listings, auth, mobile app + API. <span class="meta">Expo 57, FastAPI, PostgreSQL, JWT. https://github.com/ansh012006/makan_mitr_backend</span></li>
+<li class="proj"><b>Kisan Mitra</b> (Kisan_Mitra) — Crop disease detection, mandi rates, 10 languages. <span class="meta">Flask, OpenAI Vision, i18n. https://github.com/ansh012006/Kisan_Mitra</span></li>
+<li class="proj"><b>AgriSetu Backend</b> (agrisetu-backend) — Backend REST APIs for AgriSetu app. <span class="meta">JavaScript, REST API. https://github.com/ansh012006/agrisetu-backend</span></li>
+<li class="proj"><b>HealthQueue</b> (HealthQueue) — Patient/Doctor/Pharmacist appointments, availability, pharmacy, wait-time. <span class="meta">Flask, Flask-Login, SQLAlchemy, Vercel. Live: https://healthqueue-nine.vercel.app/ | Code: https://github.com/ansh012006/HealthQueue</span></li>
+<li class="proj"><b>Hostel Leave Management</b> (Hostel_Management) — Student leave apply, HOD/warden approve, gate IN/OUT, role dashboards. <span class="meta">Flask, Flask-Login, SQLAlchemy, Vercel. Live: https://hostel-management-three-sigma.vercel.app/ | Code: https://github.com/ansh012006/Hostel_Management</span></li>
+<li class="proj"><b>ShopHub E-Commerce</b> (E-commerce-Website) — 16-product catalog, cart/wishlist, 3-step checkout, promo codes. <span class="meta">HTML/CSS/JS, LocalStorage, Vercel. Live: https://e-commerce-gilt-seven-90.vercel.app/ | Code: https://github.com/ansh012006/E-commerce-Website</span></li>
 </ul>
+
 <h2>Education</h2>
-<p>B.Tech, SRMS CET, Bareilly — 2023-2027, CGPA 7.8</p>
-<p>Class 12th — 85%</p>
-<p>Class 10th — 94.4%</p>
+<ul>
+<li><b>B.Tech, Computer Science</b> — SRMS CET, Bareilly, 2023–2027. CGPA: 7.8</li>
+<li><b>Class 12, Science</b> — St. Francis Convent School, Bareilly, 2023. 85% · <b>Class 10</b> — 2021. 94.4%</li>
+</ul>
+
 <h2>Achievements</h2>
 <ul>
-<li>Built 8 full projects across web, mobile, and backend.</li>
-<li>Shipped 5 live apps on Vercel.</li>
+<li>Published Patent holder — Railway Accident Prevention System (Application No. 202511009933).</li>
+<li>Winner — Bug War Competition; prize winner — CTF, Code Sense, Coding Contest, Bug Bounty.</li>
+<li>Solved 100+ LeetCode and 150+ HackerRank problems.</li>
+<li>Hackathons: Hackathon 3.0 SRMS CET 2024 · Symposium SRMS Trust 2024 · Saarthi Hackathon, Graphic Era Dehradun 2025.</li>
 </ul>
+
 <h2>Certifications</h2>
 <ul>
-<li>Full-stack web development coursework (MERN, Next.js).</li>
+<li>Data Structures and Algorithms in Java — 20 hours · Python Pro Bootcamp — 56.5 hours · JavaScript Course — 5 hours · Java Masterclass — 135.5 hours.</li>
 </ul>
 </body>
 </html>
